@@ -1,1 +1,1 @@
-include ':app', ':jnistudy'
+include ':app', ':jnistudy', ':dagger2-study'

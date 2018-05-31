@@ -6,7 +6,7 @@ ext {
                targetSdkVersion : 27
     ]
     dependVersion = [
-            support: "27.1.0"
+            support: "27.1.1"
     ]
     dependencies = [ // ------------- Android -------------
                      "appcompat-v7"          : "com.android.support:appcompat-v7:${dependVersion.support}",
