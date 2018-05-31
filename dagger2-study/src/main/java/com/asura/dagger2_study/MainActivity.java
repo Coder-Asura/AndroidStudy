@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.asura.dagger2_study.step0.Step0Activity;
 import com.asura.dagger2_study.step0.Student;
 import com.asura.dagger2_study.step1.Step1Activity;
+import com.asura.dagger2_study.step2.Step2Activity1;
 
 import javax.inject.Inject;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setClass(MainActivity.this, Step1Activity.class);
                 break;
             case R.id.btn_step2:
+                intent.setClass(MainActivity.this, Step2Activity1.class);
                 break;
             default:
         }

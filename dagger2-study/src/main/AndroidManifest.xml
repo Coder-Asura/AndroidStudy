@@ -21,8 +21,15 @@
         </activity>
         <activity
             android:name=".step0.Step0Activity"
-            android:screenOrientation="portrait"/><activity
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".step1.Step1Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".step2.Step2Activity1"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".step2.Step2Activity2"
             android:screenOrientation="portrait"/>
     </application>
 
