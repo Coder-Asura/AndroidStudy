@@ -18,6 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CustomDataActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="com.asura.promote.CustomDataActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="application/octet-stream"/>
+                <data android:scheme="content"/>
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".service.music.MusicService"

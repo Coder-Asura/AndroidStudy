@@ -87,6 +87,7 @@ public class MusicService extends Service {
     }
 
     private Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case 0:

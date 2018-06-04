@@ -21,6 +21,8 @@ public class MessengerService extends Service {
     public Messenger mMessenger;
     private MediaPlayer mPlayer;
 
+    int currentPos = 0;
+
     public static final int MSG_PLAY = 1;
     public static final int MSG_PAUSE = 2;
     public static final int MSG_TIME = 3;
@@ -74,12 +76,11 @@ public class MessengerService extends Service {
         }
 
         try {
-            int currentPos = mPlayer.getCurrentPosition();
             mPlayer.reset();
             mPlayer.setDataSource((String) msg.obj);
             mPlayer.prepare();
-            mPlayer.start();
             mPlayer.seekTo(currentPos);
+            mPlayer.start();
             Message message = Message.obtain(msg);
             message.what = MessengerActivity.MSG_MUSIC_START;
             message.obj = mPlayer.getDuration();
@@ -96,6 +97,7 @@ public class MessengerService extends Service {
 
     public void pauseMusic(Message msg) {
         if (mPlayer.isPlaying()) {
+            currentPos = mPlayer.getCurrentPosition();
             mPlayer.pause();
             Message message = Message.obtain(msg);
             message.what = MessengerActivity.MSG_MUSIC_PAUSE;
@@ -152,6 +154,7 @@ public class MessengerService extends Service {
                 case MSG_PAUSE:
                     service.pauseMusic(msg);
                     break;
+                default:
             }
         }
     }

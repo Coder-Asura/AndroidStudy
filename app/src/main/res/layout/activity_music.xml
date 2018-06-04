@@ -13,13 +13,13 @@
         android:id="@+id/music_total_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="音乐总时间: 180s" />
+        android:text="音乐总时间: %1$d s" />
 
     <TextView
         android:id="@+id/music_play_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="播放时间: 30s" />
+        android:text="播放时间: %1$d s" />
 
     <Button
         android:id="@+id/start_music"

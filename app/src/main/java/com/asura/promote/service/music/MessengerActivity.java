@@ -38,6 +38,15 @@ public class MessengerActivity extends AppCompatActivity implements View.OnClick
 
     private MyHandler mMyHandler;
     public Messenger mMessenger;
+    /**
+     * 向Service发送Message的Messenger对象
+     */
+    Messenger mService = null;
+
+    /**
+     * 判断有没有绑定Service
+     */
+    boolean mBound;
 
     public static final int MSG_MUSIC_START = 4;
     public static final int MSG_MUSIC_PAUSE = 5;
@@ -57,23 +66,15 @@ public class MessengerActivity extends AppCompatActivity implements View.OnClick
         mStartBtn.setOnClickListener(this);
         mPauseBtn.setOnClickListener(this);
         new Thread() {
+            @Override
             public void run() {
                 getFirstMusic(Environment.getExternalStorageDirectory().getAbsolutePath());
             }
         }.start();
     }
 
-    /**
-     * 向Service发送Message的Messenger对象
-     */
-    Messenger mService = null;
-
-    /**
-     * 判断有没有绑定Service
-     */
-    boolean mBound;
-
     private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
             Log.d(TAG, "onServiceConnected: ");
             // Activity已经绑定了Service
@@ -82,6 +83,7 @@ public class MessengerActivity extends AppCompatActivity implements View.OnClick
             mBound = true;
         }
 
+        @Override
         public void onServiceDisconnected(ComponentName className) {
             Log.d(TAG, "onServiceDisconnected: ");
             mService = null;
@@ -138,6 +140,7 @@ public class MessengerActivity extends AppCompatActivity implements View.OnClick
                 }
 
                 break;
+            default:
         }
     }
 
@@ -173,6 +176,7 @@ public class MessengerActivity extends AppCompatActivity implements View.OnClick
             }
             switch (msg.what) {
                 case MSG_MUSIC_START:
+                    Toast.makeText(activity, "播放开始", Toast.LENGTH_SHORT).show();
                     activity.showTotalTime((int) msg.obj);
                     break;
                 case MSG_MUSIC_PAUSE:
@@ -184,6 +188,7 @@ public class MessengerActivity extends AppCompatActivity implements View.OnClick
                 case MSG_MUSIC_END:
                     Toast.makeText(activity, "播放完毕", Toast.LENGTH_SHORT).show();
                     break;
+                default:
             }
         }
     }

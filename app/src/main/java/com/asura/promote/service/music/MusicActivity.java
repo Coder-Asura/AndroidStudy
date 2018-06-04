@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.asura.promote.R;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 
 /**
  * Created by Liuxd on 2017/6/15 15:35.
@@ -35,6 +37,11 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
     private Button mPauseBtn;
 
     private String musicPath;
+
+    private Handler mHandler;
+
+    private static final int MSG_SCAN_MUSIC = 1;
+    private static final int MSG_PLAY_MUSIC = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +61,8 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         mStartBtn.setOnClickListener(this);
         mPauseBtn.setOnClickListener(this);
 
-        new Thread(){
-            public void run() {
-                getFirstMusic(Environment.getExternalStorageDirectory().getAbsolutePath());
-            };
-        }.start();
-
+        mHandler = new MyHandler(this);
+        mHandler.sendEmptyMessage(MSG_SCAN_MUSIC);
         Intent intent = new Intent(this, MusicService.class);
         bindService(intent, conn, Context.BIND_AUTO_CREATE);
     }
@@ -74,40 +77,27 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         @Override
         public void onServiceConnected(ComponentName name, IBinder binder) {
             Log.e("test", "onServiceConnected");
-            service = ((MusicService.MyBinder)binder).getService();
+            service = ((MusicService.MyBinder) binder).getService();
         }
     };
 
-    private Handler mHandler = new Handler(){
-        public void handleMessage(android.os.Message msg) {
-            switch (msg.what) {
-                case 1:
-                    if (service.isPlaying()) {
-                        mPlayTime.setText("播放时间:" + service.getCurrentPosition() / 1000 + "s");
-                        mHandler.sendEmptyMessageDelayed(1, 1000);
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-        };
-    };
-
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         mHandler.removeCallbacksAndMessages(null);
         unbindService(conn);
         unregisterReceiver(mReceiver);
-    };
+    }
+
+    ;
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.start_music:
                 service.playMusic(musicPath);
-                mTotalTime.setText(musicPath+"音乐总时间：" + service.getDuration() / 1000 + "s");
-                mHandler.sendEmptyMessageDelayed(1, 1000);
+                mTotalTime.setText(musicPath + "音乐总时间：" + service.getDuration() / 1000 + "s");
+                mHandler.sendEmptyMessageDelayed(MSG_PLAY_MUSIC, 1000);
                 break;
             case R.id.pause_music:
                 service.pauseMusic();
@@ -148,4 +138,40 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     };
+
+    private static class MyHandler extends Handler {
+        WeakReference<MusicActivity> mActivityWeakReference;
+
+        public MyHandler(MusicActivity activity) {
+            this.mActivityWeakReference = new WeakReference<MusicActivity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            final MusicActivity activity = mActivityWeakReference.get();
+            if (activity == null) {
+                return;
+            }
+            switch (msg.what) {
+                case MSG_SCAN_MUSIC:
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            activity.getFirstMusic(Environment.getExternalStorageDirectory().getAbsolutePath());
+                        }
+                    }.start();
+                    break;
+                case MSG_PLAY_MUSIC:
+                    if (activity.service.isPlaying()) {
+                        activity.mPlayTime.setText("播放时间:" + activity.service.getCurrentPosition() / 1000 + "s");
+                        activity.mHandler.sendEmptyMessageDelayed(MSG_PLAY_MUSIC, 1000);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
 }
