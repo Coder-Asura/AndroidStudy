@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/dagger2-android_study" />
             <option value="$PROJECT_DIR$/dagger2-study" />
             <option value="$PROJECT_DIR$/jnistudy" />
+            <option value="$PROJECT_DIR$/jsoup-demo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
