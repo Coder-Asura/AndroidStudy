@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:supportsRtl">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".activity.MainActivity">
+
+    <item
+        android:id="@+id/menu_beautiful_girl"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/menu_beautiful_girl"/>
+
+    <item
+        android:id="@+id/menu_figure_girl"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/menu_figure_girl"/>
+
+    <item
+        android:id="@+id/menu_laugh_girl"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/menu_laugh_girl"/>
+</menu>

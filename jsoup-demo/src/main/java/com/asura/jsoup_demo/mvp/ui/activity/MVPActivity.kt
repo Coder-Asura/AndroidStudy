@@ -1,15 +1,15 @@
 package com.asura.jsoup_demo.mvp.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.asura.jsoup_demo.mvp.IPresenter
 import com.asura.jsoup_demo.mvp.IView
 import com.asura.jsoup_demo.mvp.ui.MVPCallback
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 /**
  * 集成MVP的Activity
  */
-open abstract class MVPActivity<V : IView, P : IPresenter<V>> : AppCompatActivity(), IView, MVPCallback<V, P> {
+open abstract class MVPActivity<V : IView, P : IPresenter<V>> : RxAppCompatActivity(), IView, MVPCallback<V, P> {
 
     private var p: P? = null
     private var delegateActivity: DelegateActivityImp<V, P>? = null
