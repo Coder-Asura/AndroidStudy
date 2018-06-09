@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="用户设置">
+    <item android:title="@string/nav_title_dev">
         <item
-            android:id="@+id/nav_post_goods"
+            android:id="@+id/nav_github"
             android:icon="@drawable/ic_radio_exist_goods_checked"
-            android:title="@string/app_name"/>
+            android:title="@string/nav_github"/>
         <item
-            android:id="@+id/nav_exist_goods"
+            android:id="@+id/nav_janshu"
             android:icon="@drawable/ic_radio_exist_goods_checked"
-            android:title="@string/app_name"/>
+            android:title="@string/nav_jianshu"/>
         <item
-            android:id="@+id/nav_change_account"
-            android:icon="@drawable/ic_action_login"
-            android:title="@string/change_account"/>
+            android:id="@+id/nav_weibo"
+            android:icon="@drawable/ic_radio_exist_goods_checked"
+            android:title="@string/nav_weibo"/>
     </item>
 
-    <item android:title="软件设置">
+    <item android:title="@string/nav_title_setting">
         <menu>
             <item
-                android:id="@+id/nav_update"
+                android:id="@+id/nav_clear_cache"
                 android:icon="@drawable/ic_action_update"
-                android:title="@string/data_update"/>
+                android:title="@string/nav_clear_cache"/>
+            <item
+                android:id="@+id/nav_update"
+                android:icon="@drawable/ic_action_about"
+                android:title="@string/nav_update"/>
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_action_about"
-                android:title="@string/about_us"/>
-            <!--<item-->
-            <!--android:id="@+id/nav_setting"-->
-            <!--android:icon="@drawable/ic_action_setting"-->
-            <!--android:title="软件设置"/>-->
+                android:icon="@drawable/ic_action_setting"
+                android:title="@string/nav_about"/>
         </menu>
     </item>
 

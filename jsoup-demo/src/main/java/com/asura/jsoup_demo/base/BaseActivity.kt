@@ -1,6 +1,7 @@
 package com.asura.jsoup_demo.base
 
 import android.os.Bundle
+import android.support.annotation.LayoutRes
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
@@ -25,17 +26,18 @@ abstract class BaseActivity<V : IView, P : IPresenter<V>> : MVPActivity<V, P>(),
     /**
      * 获取布局Id
      */
+    @LayoutRes
     abstract fun getLayoutId(): Int
 
     /**
      * 初始化监听器
      */
-    fun initListener() {}
+    open fun initListener() {}
 
     /**
      * 初始化数据，调用位置在 initViews 之后
      */
-    protected fun initDatas() {}
+    open fun initDatas() {}
 
     /**
      * 初始化 View， 调用位置在 initDatas 之后
@@ -47,7 +49,12 @@ abstract class BaseActivity<V : IView, P : IPresenter<V>> : MVPActivity<V, P>(),
      * 初始化 ActionBar
      */
     private fun initActionBar() {
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        var toolbar: Toolbar? = null
+        try {
+            toolbar = findViewById(R.id.toolbar) as Toolbar
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         if (toolbar != null) {
             toolbar.setTitle("")
             setSupportActionBar(toolbar)

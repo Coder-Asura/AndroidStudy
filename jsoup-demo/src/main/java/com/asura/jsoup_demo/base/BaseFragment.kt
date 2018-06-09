@@ -44,17 +44,17 @@ abstract class BaseFragment<V : IView, P : IPresenter<V>> : MVPFragment<V, P>() 
     /**
      * 初始化监听器
      */
-    fun initListener() {}
+    open fun initListener() {}
 
     /**
-     * 初始化数据，调用位置在 initViews 之前
+     * 初始化数据，调用位置在 initViews 之后
      */
-    protected fun initDatas() {}
+    open fun initDatas() {}
 
     /**
      * 返回键
      */
-    fun onBackPressed(): Boolean {
+    open fun onBackPressed(): Boolean {
         return false
     }
 
@@ -89,15 +89,15 @@ abstract class BaseFragment<V : IView, P : IPresenter<V>> : MVPFragment<V, P>() 
         super.onCreateView(inflater, container, savedInstanceState)
         ALog.t("生命周期", TAG, "onCreateView")
         val rootView = inflater.inflate(getLayoutId(), container, false)
-        initViews(rootView)
-        initListener()
-        initDatas()
         return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ALog.t("生命周期", TAG, "onViewCreated")
+        initViews(view)
+        initListener()
+        initDatas()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

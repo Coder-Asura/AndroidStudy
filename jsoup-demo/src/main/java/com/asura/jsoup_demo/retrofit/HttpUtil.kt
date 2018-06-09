@@ -1,10 +1,13 @@
 package com.asura.jsoup_demo.retrofit
 
+import android.util.Log
+import com.asura.jsoup_demo.BuildConfig
 import com.asura.jsoup_demo.api.ApiService
 import com.asura.jsoup_demo.config.Constant
 import com.asura.jsoup_demo.converter.CustomGsonConverterFactory
 import com.asura.jsoup_demo.util.ALog
 import com.google.gson.GsonBuilder
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,9 +38,7 @@ class HttpUtil {
 
         private fun getOkHttpClient(): OkHttpClient {
             val builder: OkHttpClient.Builder = OkHttpClient.Builder()
-            builder.addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { msg ->
-                ALog.d("retrofit_debug", msg)
-            }))
+            builder.addInterceptor(getHttpLoggingInterceptor())
                     .connectTimeout(10 * 1000L, TimeUnit.MILLISECONDS)
                     .writeTimeout(10 * 1000L, TimeUnit.MILLISECONDS)
                     .readTimeout(10 * 1000L, TimeUnit.MILLISECONDS)
@@ -45,6 +46,17 @@ class HttpUtil {
 //                            SSLContextUtil.trustManagers as X509TrustManager)
 //                    .hostnameVerifier(SSLContextUtil.HOSTNAME_VERIFIER)
             return builder.build();
+        }
+
+        private fun getHttpLoggingInterceptor(): HttpLoggingInterceptor {
+            //日志显示级别
+            val level = if (BuildConfig.LOG_ENABLE) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+            //新建log拦截器
+            val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
+                ALog.d("RxRetrofit", message)
+            })
+            loggingInterceptor.level = level
+            return loggingInterceptor
         }
     }
 

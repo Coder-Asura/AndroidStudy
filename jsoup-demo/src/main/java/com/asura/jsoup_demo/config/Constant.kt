@@ -5,5 +5,5 @@ package com.asura.jsoup_demo.config
  */
 object Constant {
     const val BASE_URL: String = "http://m.xxxiao.com/"
-    const val URL_BEAUTIFUL_GIRL: String = "tag"
+    const val URL_NEW_GIRL: String = "new/page/{page}"
 }

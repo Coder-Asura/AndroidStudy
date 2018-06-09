@@ -17,7 +17,7 @@
         android:id="@+id/nav_header_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:srcCompat="@mipmap/ic_action_user"/>
+        app:srcCompat="@mipmap/asura"/>
 
     <TextView
         android:id="@+id/nav_header_name"
