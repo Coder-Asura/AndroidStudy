@@ -2,6 +2,7 @@ package com.asura.jsoup_demo.base
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.annotation.StringRes
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
@@ -9,6 +10,7 @@ import com.asura.jsoup_demo.R
 import com.asura.jsoup_demo.mvp.IPresenter
 import com.asura.jsoup_demo.mvp.IView
 import com.asura.jsoup_demo.mvp.ui.activity.MVPActivity
+import com.asura.jsoup_demo.util.UiUtils
 
 /**
  * @author Created by Asura on 2018/6/7 13:13.
@@ -69,5 +71,41 @@ abstract class BaseActivity<V : IView, P : IPresenter<V>> : MVPActivity<V, P>(),
             android.R.id.home -> finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    /**
+     * 发出一个短Toast
+     *
+     * @param msgId 内容
+     */
+    fun toastShort(@StringRes msgId: Int) {
+        UiUtils.toastShort(msgId)
+    }
+
+    /**
+     * 发出一个短Toast
+     *
+     * @param msg 内容
+     */
+    fun toastShort(msg: String) {
+        UiUtils.toastShort(msg)
+    }
+
+    /**
+     * 发出一个长toast提醒
+     *
+     * @param msgId 内容
+     */
+    fun toastLong(@StringRes msgId: Int) {
+        UiUtils.toastLong(msgId)
+    }
+
+    /**
+     * 发出一个长toast提醒
+     *
+     * @param msg 内容
+     */
+    fun toastLong(msg: String) {
+        UiUtils.toastLong(msg)
     }
 }

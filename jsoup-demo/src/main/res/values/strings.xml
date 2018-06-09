@@ -19,4 +19,6 @@
     <string name="menu_new_girl">最新套图</string>
     <string name="menu_figure_girl">花样女神</string>
     <string name="menu_laugh_girl">女神笑了</string>
+
+    <string name="tip_double_click">双击标题栏快速返回顶部</string>
 </resources>

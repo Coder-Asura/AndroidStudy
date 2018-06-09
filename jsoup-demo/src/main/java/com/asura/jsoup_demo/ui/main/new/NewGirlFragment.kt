@@ -70,4 +70,13 @@ class NewGirlFragment : BaseFragment<INewGirlView, NewGirlPresenter>(), INewGirl
     override fun createPresenter(): NewGirlPresenter {
         return NewGirlPresenter(getAc())
     }
+
+    fun quickToTop() {
+        rv_new_girl.post {
+            run {
+//                rv_new_girl.scrollToPosition(0)
+                rv_new_girl.smoothScrollToPosition(0)
+            }
+        }
+    }
 }
