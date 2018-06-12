@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/dagger2-study" />
             <option value="$PROJECT_DIR$/jnistudy" />
             <option value="$PROJECT_DIR$/jsoup-demo" />
+            <option value="$PROJECT_DIR$/mvp-framework" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
