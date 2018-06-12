@@ -1,11 +1,14 @@
 package com.asura.jsoup_demo.mvp.ui.lce
 
-import com.asura.jsoup_demo.mvp.IView
+import com.asura.mvp_framework.base.view.IMvpView
 
+/**
+ * @author Created by Asura on 2018/6/12 14:28.
+ */
 /**
  * @author Created by Asura on 2018/6/8 13:51.
  */
-interface ILCEView<T> :IView{
+interface ILCEView<T> : IMvpView {
 
     fun showLoadingView()
 

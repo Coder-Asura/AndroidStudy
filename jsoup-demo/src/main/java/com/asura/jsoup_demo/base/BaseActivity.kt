@@ -7,15 +7,15 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import com.asura.jsoup_demo.R
-import com.asura.jsoup_demo.mvp.IPresenter
-import com.asura.jsoup_demo.mvp.IView
-import com.asura.jsoup_demo.mvp.ui.activity.MVPActivity
 import com.asura.jsoup_demo.util.UiUtils
+import com.asura.mvp_framework.base.presenter.IMvpPresenter
+import com.asura.mvp_framework.base.view.IMvpView
+import com.asura.mvp_framework.support.view.BaseMvpActivity
 
 /**
  * @author Created by Asura on 2018/6/7 13:13.
  */
-abstract class BaseActivity<V : IView, P : IPresenter<V>> : MVPActivity<V, P>(), View.OnClickListener {
+abstract class BaseActivity<V : IMvpView, P : IMvpPresenter<V>> : BaseMvpActivity<V, P>(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())

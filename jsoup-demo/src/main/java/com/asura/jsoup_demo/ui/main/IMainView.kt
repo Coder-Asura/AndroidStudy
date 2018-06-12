@@ -1,11 +1,11 @@
 package com.asura.jsoup_demo.ui.main
 
-import com.asura.jsoup_demo.mvp.IView
+import com.asura.mvp_framework.base.view.IMvpView
 
 /**
  * @author Created by Asura on 2018/6/7 15:49.
  */
-interface IMainView : IView {
+interface IMainView : IMvpView {
     /**
      * 切换内容
      */

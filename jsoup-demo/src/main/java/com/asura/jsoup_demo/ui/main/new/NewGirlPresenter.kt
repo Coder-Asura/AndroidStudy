@@ -2,17 +2,18 @@ package com.asura.jsoup_demo.ui.main.new
 
 import com.asura.jsoup_demo.base.HttpCallback
 import com.asura.jsoup_demo.bean.NewGirl
-import com.asura.jsoup_demo.mvp.BasePresenter
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.asura.mvp_framework.base.presenter.impl.BaseMvpPresenter
+import com.trello.rxlifecycle2.LifecycleProvider
+import com.trello.rxlifecycle2.android.FragmentEvent
 
 /**
  * @author Created by Asura on 2018/6/8 17:13.
  */
-class NewGirlPresenter : BasePresenter<INewGirlView> {
+class NewGirlPresenter : BaseMvpPresenter<INewGirlView> {
     lateinit var model: NewGirlModel
 
-    constructor(activity: RxAppCompatActivity) {
-        model = NewGirlModel(activity)
+    constructor(provider: LifecycleProvider<FragmentEvent>) {
+        model = NewGirlModel(provider)
     }
 
     fun loadList(loadMore: Boolean, page: Int, size: Int) {

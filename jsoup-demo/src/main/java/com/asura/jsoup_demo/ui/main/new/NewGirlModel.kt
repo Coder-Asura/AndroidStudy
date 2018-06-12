@@ -4,8 +4,8 @@ import com.asura.jsoup_demo.base.HttpCallback
 import com.asura.jsoup_demo.bean.NewGirl
 import com.asura.jsoup_demo.retrofit.HttpUtil
 import com.asura.jsoup_demo.util.ALog
-import com.trello.rxlifecycle2.android.ActivityEvent
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle2.LifecycleProvider
+import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -19,10 +19,10 @@ import java.util.*
  * @author Created by Asura on 2018/6/8 14:05.
  */
 class NewGirlModel : INewGirlModel<List<NewGirl>> {
-    private var rxAppCompatActivity: SoftReference<RxAppCompatActivity>? = null
+    private var provider: SoftReference<LifecycleProvider<FragmentEvent>>? = null
 
-    constructor(activity: RxAppCompatActivity) {
-        this.rxAppCompatActivity = SoftReference<RxAppCompatActivity>(activity)
+    constructor(provider: LifecycleProvider<FragmentEvent>) {
+        this.provider = SoftReference<LifecycleProvider<FragmentEvent>>(provider)
     }
 
     override fun parseHtml2List(html: String): List<NewGirl> {
@@ -63,7 +63,7 @@ class NewGirlModel : INewGirlModel<List<NewGirl>> {
     override fun loadData(loadMore: Boolean, page: Int, size: Int, httpCallback: HttpCallback<List<NewGirl>>) {
         HttpUtil.getApiService()
                 .getBeautifulGirl(page)
-                .compose(rxAppCompatActivity?.get()?.bindUntilEvent(ActivityEvent.PAUSE))
+                .compose(provider?.get()?.bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { html ->

@@ -9,16 +9,16 @@ import android.support.annotation.StringRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.asura.jsoup_demo.mvp.IPresenter
-import com.asura.jsoup_demo.mvp.IView
-import com.asura.jsoup_demo.mvp.ui.fragment.MVPFragment
 import com.asura.jsoup_demo.util.ALog
 import com.asura.jsoup_demo.util.UiUtils
+import com.asura.mvp_framework.base.presenter.IMvpPresenter
+import com.asura.mvp_framework.base.view.IMvpView
+import com.asura.mvp_framework.support.view.BaseMvpFragment
 
 /**
  * @author Created by Asura on 2018/6/7 14:23.
  */
-abstract class BaseFragment<V : IView, P : IPresenter<V>> : MVPFragment<V, P>() {
+abstract class BaseFragment<V : IMvpView, P : IMvpPresenter<V>> : BaseMvpFragment<V, P>() {
     protected val TAG = this.javaClass.simpleName
     var mActivity: BaseActivity<V, P>? = null
 
