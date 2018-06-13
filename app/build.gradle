@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+def versionMajor
+def versionMinor
+def versionPatch
+def baseVersionCode
+def baseVersionName
+
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -8,10 +18,19 @@ android {
         applicationId "com.asura.android_study"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        flavorDimensions "channel"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file('Asura_Keystore.jks')
+            storePassword '123456'
+            keyAlias 'asura'
+            keyPassword '123456'
+        }
+    }
+
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_ENABLE", "true"
@@ -21,7 +40,39 @@ android {
         release {
             buildConfigField "boolean", "LOG_ENABLE", "false"
             minifyEnabled true
+            // 混淆
+            minifyEnabled true
+            // Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release//打包命令行：gradlew assembleRelease
+
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = "android_study_v${variant.productFlavors[0].versionName}_${releaseTime()}${variant.productFlavors[0].name}.apk"
+                        outputFileName = new File("../../outputs/apks", fileName)
+                    }
+                }
+            }
+        }
+    }
+    productFlavors {
+        _release {
+            dimension "channel"
+            versionMajor = 1
+            versionMinor = 2
+            versionPatch = 0
+            baseVersionCode = versionMajor * 100 + versionMinor * 10 + versionPatch
+            baseVersionName = versionMajor + '.' + versionMinor + '.' + versionPatch
+
+            applicationIdSuffix ".release"
+            versionCode baseVersionCode
+            versionName "$baseVersionName"
         }
     }
 }
@@ -54,7 +105,7 @@ dependencies {
     implementation rootProject.ext.dependencies."glide"
 
     implementation rootProject.ext.dependencies."statusbarUitl"
-    compile 'com.r0adkll:slidableactivity:2.0.6'
+    implementation 'com.r0adkll:slidableactivity:2.0.6'
 
-    implementation 'com.orhanobut:logger:1.15'
+    implementation rootProject.ext.dependencies["logger"]
 }
