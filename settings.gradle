@@ -1,1 +1,2 @@
-include ':app', ':jnistudy', ':dagger2-study', ':dagger2-android_study', ':jsoup-demo', ':mvp-framework', ':customview-study'
+include ':app', ':jni-study', ':dagger2-study', ':dagger2-android-study',
+        ':jsoup-study', ':mvp-framework', ':customview-study',":greendao-study"
