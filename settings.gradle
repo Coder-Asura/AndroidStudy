@@ -1,1 +1,1 @@
-include ':app', ':jnistudy', ':dagger2-study', ':dagger2-android_study', ':jsoup-demo', ':mvp-framework'
+include ':app', ':jnistudy', ':dagger2-study', ':dagger2-android_study', ':jsoup-demo', ':mvp-framework', ':customview-study'
