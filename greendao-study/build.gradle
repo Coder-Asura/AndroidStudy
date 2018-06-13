@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.asura.greendao_study"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao{
+//        数据库schema版本，也可以理解为数据库版本号
+        schemaVersion 1
+//        设置DaoMaster、DaoSession、Dao包名
+        daoPackage 'com.asura.greendao_study.dao'
+//        设置DaoMaster、DaoSession、Dao目录
+        targetGenDir 'src/main/java'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    testImplementation 'junit:junit:4.12'
+
+    implementation rootProject.ext.dependencies."appcompat-v7"
+    implementation rootProject.ext.dependencies."recyclerview-v7"
+
+    implementation rootProject.ext.dependencies."butterknife"
+    annotationProcessor rootProject.ext.dependencies."butterknife-compiler"
+
+    implementation 'org.greenrobot:greendao:3.2.2'
+}
