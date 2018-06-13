@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Promote</string>
+    <string name="app_name">Android_Study</string>
+
+    <!--权限-->
+    <string name="write_permission">读写权限</string>
+    <string name="location_permission">定位权限</string>
+    <string name="phone_state_permission">读取手机状态信息权限</string>
+    <string name="camera_permission">相机权限</string>
+    <string name="apply_permission">申请</string>
+    <string name="need_permission_tip">为了程序正常运行，请允许以下权限:</string>
+    <string name="set_permission_tip">为了程序正常运行,请在设置中打开以下权限:</string>
+    <string name="enable_gps_tip">为了程序正常运行,请在设置中打开GPS位置服务</string>
+    <string name="dis_enable_gps_tip">您没有启用GPS位置服务，程序可能无法正常运行</string>
+    <string name="dis_enable_ble_tip">您没有启用蓝牙开关，程序可能无法正常运行</string>
+
+
+    <string name="finish">完成</string>
+    <string name="done">确定</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="prompt">提示</string>
+    <string name="go_setting">去设置</string>
+    <string name="I_know">好的</string>
 </resources>

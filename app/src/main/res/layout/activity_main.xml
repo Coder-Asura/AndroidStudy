@@ -7,25 +7,43 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_open_qq"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="打开qq"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_open_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="打开邮箱App发邮件"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_open_email_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="打开邮箱App"/>
 
+    <Button
+        android:id="@+id/btn_set_wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置透明壁纸"/>
+
+    <Button
+        android:id="@+id/btn_music_bind_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bind Service 音乐"/>
+
+    <Button
+        android:id="@+id/btn_messenger_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Messenger Service 音乐"/>
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_drawable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ff0000"

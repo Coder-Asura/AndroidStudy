@@ -1,4 +1,4 @@
-package com.asura.promote.service.music;
+package com.asura.android_study.service.music;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.asura.promote.R;
+import com.asura.android_study.R;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

@@ -1,4 +1,4 @@
-package com.asura.promote.service.music;
+package com.asura.android_study.service.music;
 
 import android.app.Service;
 import android.content.Intent;

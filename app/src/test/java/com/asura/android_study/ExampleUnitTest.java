@@ -1,4 +1,4 @@
-package com.asura.promote;
+package com.asura.android_study;
 
 import org.junit.Test;
 

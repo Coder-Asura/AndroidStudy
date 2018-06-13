@@ -1,4 +1,4 @@
-package com.asura.promote.adapter;
+package com.asura.android_study.adapter;
 
 import android.content.Context;
 import android.content.pm.ResolveInfo;
@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.asura.promote.R;
+import com.asura.android_study.R;
 
 import java.util.List;
 

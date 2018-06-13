@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.asura.promote">
+          package="com.asura.android_study">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".service.music.MessengerActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -34,12 +36,34 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".service.music.MusicActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".service.music.MessengerActivity"
+            android:screenOrientation="portrait"/>
+
         <service
             android:name=".service.music.MusicService"
             android:enabled="true"/>
         <service
             android:name=".service.music.MessengerService"
             android:enabled="true"/>
+
+        <!-- 配置实时壁纸Service -->
+        <service
+            android:name=".view.CameraLiveWallpaper"
+            android:label="透明壁纸"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <!-- 为实时壁纸配置intent-filter -->
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService"/>
+            </intent-filter>
+            <!-- 为实时壁纸配置meta-data -->
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/livewallpaper"/>
+        </service>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.asura.promote.service.music;
+package com.asura.android_study.service.music;
 
 import android.app.Service;
 import android.content.Intent;
@@ -14,6 +14,7 @@ public class MusicService extends Service {
     private MediaPlayer mPlayer;
 
     private IBinder binder = new MyBinder();
+    int currentPos = 0;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -58,7 +59,6 @@ public class MusicService extends Service {
         }
 
         try {
-            int currentPos = getCurrentPosition();
             mPlayer.reset();
             mPlayer.setDataSource(path);
             mPlayer.prepare();
@@ -76,6 +76,7 @@ public class MusicService extends Service {
 
     public void pauseMusic() {
         if (isPlaying()) {
+            currentPos = mPlayer.getCurrentPosition();
             mPlayer.pause();
         }
     }
@@ -100,9 +101,10 @@ public class MusicService extends Service {
                     break;
 
                 default:
-                    break;
             }
-        };
+        }
+
+        ;
     };
 
     public int getDuration() {

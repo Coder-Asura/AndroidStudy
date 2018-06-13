@@ -1,4 +1,4 @@
-package com.asura.promote.service.music;
+package com.asura.android_study.service.music;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.asura.promote.R;
+import com.asura.android_study.R;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -96,7 +96,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.start_music:
                 service.playMusic(musicPath);
-                mTotalTime.setText(musicPath + "音乐总时间：" + service.getDuration() / 1000 + "s");
+                mTotalTime.setText(musicPath + "\n音乐总时间：" + service.getDuration() / 1000 + "s");
                 mHandler.sendEmptyMessageDelayed(MSG_PLAY_MUSIC, 1000);
                 break;
             case R.id.pause_music:
