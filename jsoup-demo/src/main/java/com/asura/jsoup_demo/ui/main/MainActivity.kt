@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import com.asura.jsoup_demo.R
+import com.asura.jsoup_demo.R.id.*
 import com.asura.jsoup_demo.base.BaseActivity
 import com.asura.jsoup_demo.config.Constant
 import com.asura.jsoup_demo.ui.main.new.NewGirlFragment
@@ -73,6 +74,8 @@ class MainActivity : BaseActivity<IMainView, MainPresenter>(), IMainView, Naviga
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+        nav_view.menu.findItem(R.id.nav_about).title = String.format(getString(R.string.nav_about),
+                AppUtils.getAppVersion(this));
         // 双击 666
         val detector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
             override fun onDoubleTap(e: MotionEvent): Boolean {
