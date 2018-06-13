@@ -1,4 +1,4 @@
-package com.asura.android_study;
+package com.asura.android_study.activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -6,29 +6,41 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.asura.android_study.R;
+import com.asura.android_study.activity.base.BasePermissionActivity;
+import com.asura.android_study.activity.behavior.CoordinatorLayoutActivity;
+import com.asura.android_study.activity.behavior.UCBehaviorActivity;
+import com.asura.android_study.activity.fragtofrag.MyActivity;
+import com.asura.android_study.activity.itemtype.ItemTypeActivity;
+import com.asura.android_study.activity.viewpager.ViewPagerActivity;
 import com.asura.android_study.adapter.MailAppAdapter;
+import com.asura.android_study.adapter.ScrollerAdapter;
+import com.asura.android_study.receiver.NetWorkReceiver;
 import com.asura.android_study.service.music.MessengerActivity;
 import com.asura.android_study.service.music.MusicActivity;
+import com.asura.android_study.utils.FontHelper;
 import com.asura.android_study.view.CameraLiveWallpaper;
+import com.asura.android_study.view.HorizontalListView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BasePermissionActivity {
@@ -47,13 +59,52 @@ public class MainActivity extends BasePermissionActivity {
     Button mBtnMessengerService;
     @BindView(R.id.tv_drawable)
     TextView mTvDrawable;
+    @BindView(R.id.hlscrol)
+    HorizontalListView mHlscrol;
+    @BindView(R.id.btn_rxJava)
+    Button mBtnRxJava;
+    @BindView(R.id.btn_leafAnim)
+    Button mBtnLeafAnim;
+    @BindView(R.id.btn_coordinatorLayout)
+    Button mBtnCoordinatorLayout;
+    @BindView(R.id.btn_UCBehaviorActivity)
+    Button mBtnUCBehaviorActivity;
+    @BindView(R.id.btn_fragment_activity)
+    Button mBtnFragmentActivity;
+    @BindView(R.id.btn_item_type)
+    Button mBtnItemType;
+    @BindView(R.id.btn_viewpager)
+    Button mBtnViewpager;
+    @BindView(R.id.btn_bottom_nav)
+    Button mBtnBottomNav;
+    @BindView(R.id.btn_custom_data)
+    Button mBtnCustomData;
+    @BindView(R.id.font_content)
+    LinearLayout mFontContent;
+
+    private NetWorkReceiver mNetWorkReceiver;
+    private ScrollerAdapter mScrollerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public int setLayoutId() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    public void initView() {
+        FontHelper.injectFont(mFontContent);
+        mNetWorkReceiver = new NetWorkReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(mNetWorkReceiver, intentFilter);
+
+
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < 40; i++) {
+            strings.add("新开关" + i);
+        }
+        mScrollerAdapter = new ScrollerAdapter(MainActivity.this, strings);
+        mHlscrol.setAdapter(mScrollerAdapter);
         Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
         drawable.setBounds(new Rect(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight()));
         mTvDrawable.setCompoundDrawables(drawable, null, null, null);
@@ -61,7 +112,10 @@ public class MainActivity extends BasePermissionActivity {
         checkSelfPermission();
     }
 
-    @OnClick({R.id.btn_open_qq, R.id.btn_open_email, R.id.btn_open_email_app, R.id.btn_set_wallpaper, R.id.btn_music_bind_service, R.id.btn_messenger_service})
+    @OnClick({R.id.btn_open_qq, R.id.btn_open_email, R.id.btn_open_email_app, R.id.btn_set_wallpaper,
+            R.id.btn_music_bind_service, R.id.btn_messenger_service, R.id.btn_rxJava, R.id.btn_leafAnim,
+            R.id.btn_coordinatorLayout, R.id.btn_UCBehaviorActivity, R.id.btn_fragment_activity,
+            R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_qq:
@@ -82,6 +136,37 @@ public class MainActivity extends BasePermissionActivity {
                 break;
             case R.id.btn_messenger_service:
                 startActivity(new Intent(MainActivity.this, MessengerActivity.class));
+                break;
+            case R.id.btn_rxJava:
+                mHlscrol.scrollTo(mHlscrol.getChildAt(0).getWidth() * 10);
+                startActivity(new Intent(MainActivity.this, RxJavaActivity.class));
+//                finish();
+                break;
+            case R.id.btn_leafAnim:
+                mHlscrol.scrollTo(mHlscrol.getChildAt(0).getWidth() * 20);
+                startActivity(new Intent(MainActivity.this, LeafLoadingActivity.class));
+//                finish();
+                break;
+            case R.id.btn_coordinatorLayout:
+                startActivity(new Intent(MainActivity.this, CoordinatorLayoutActivity.class));
+                break;
+            case R.id.btn_UCBehaviorActivity:
+                startActivity(new Intent(MainActivity.this, UCBehaviorActivity.class));
+                break;
+            case R.id.btn_fragment_activity:
+                startActivity(new Intent(MainActivity.this, MyActivity.class));
+                break;
+            case R.id.btn_item_type:
+                startActivity(new Intent(MainActivity.this, ItemTypeActivity.class));
+                break;
+            case R.id.btn_viewpager:
+                startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+                break;
+            case R.id.btn_bottom_nav:
+                startActivity(new Intent(MainActivity.this, BottomNavActivity.class));
+                break;
+            case R.id.btn_custom_data:
+                startActivity(new Intent(MainActivity.this, CustomDataActivity.class));
                 break;
             default:
         }
@@ -179,6 +264,12 @@ public class MainActivity extends BasePermissionActivity {
             }
         });
         builder.show();
-
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mNetWorkReceiver);
+    }
+
 }

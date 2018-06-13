@@ -13,8 +13,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
+            buildConfigField "boolean", "LOG_ENABLE", "true"
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField "boolean", "LOG_ENABLE", "false"
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -29,6 +35,7 @@ dependencies {
     implementation rootProject.ext.dependencies."appcompat-v7"
     implementation rootProject.ext.dependencies."design"
     implementation rootProject.ext.dependencies."recyclerview-v7"
+    implementation rootProject.ext.dependencies."cardview-v7"
     implementation rootProject.ext.dependencies."constraint-layout"
 
     implementation rootProject.ext.dependencies."butterknife"
@@ -47,4 +54,7 @@ dependencies {
     implementation rootProject.ext.dependencies."glide"
 
     implementation rootProject.ext.dependencies."statusbarUitl"
+    compile 'com.r0adkll:slidableactivity:2.0.6'
+
+    implementation 'com.orhanobut:logger:1.15'
 }

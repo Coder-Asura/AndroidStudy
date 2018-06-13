@@ -2,10 +2,10 @@
 随便记录一下Android学习中的一些问题，代码质量很差，慎Star
 
 ### 工程目录
-#### app
+#### android-study
 记录一些不太经常用到的方法
 
-![运行截图](./ScreenShot/app.png)
+![运行截图](./ScreenShot/android-study.jpg)
 
 #### customview-study
 自定义View的学习

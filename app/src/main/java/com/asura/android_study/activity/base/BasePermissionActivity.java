@@ -1,4 +1,4 @@
-package com.asura.android_study;
+package com.asura.android_study.activity.base;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -12,7 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import com.asura.android_study.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 /**
  * @author Created by Asura on 2017/12/19 10:18.
  */
-public abstract class BasePermissionActivity extends AppCompatActivity {
+public abstract class BasePermissionActivity extends BaseActivity {
     /**
      * 权限申请
      */

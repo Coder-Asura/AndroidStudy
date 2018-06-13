@@ -1,4 +1,4 @@
-package com.asura.android_study;
+package com.asura.android_study.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.asura.android_study.R;
 
 /**
  * 自定义处理某种特殊类型文件
