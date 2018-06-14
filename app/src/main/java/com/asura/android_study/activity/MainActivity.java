@@ -24,7 +24,7 @@ import com.asura.android_study.R;
 import com.asura.android_study.activity.base.BasePermissionActivity;
 import com.asura.android_study.activity.behavior.CoordinatorLayoutActivity;
 import com.asura.android_study.activity.behavior.UCBehaviorActivity;
-import com.asura.android_study.activity.fragtofrag.MyActivity;
+import com.asura.android_study.activity.fragtofrag.Fragment2Activity;
 import com.asura.android_study.activity.itemtype.ItemTypeActivity;
 import com.asura.android_study.activity.viewpager.ViewPagerActivity;
 import com.asura.android_study.adapter.MailAppAdapter;
@@ -35,6 +35,8 @@ import com.asura.android_study.service.music.MusicActivity;
 import com.asura.android_study.utils.FontHelper;
 import com.asura.android_study.view.CameraLiveWallpaper;
 import com.asura.android_study.view.HorizontalListView;
+import com.asura.android_study.activity.constranitlayout.ConstraintLayoutActivity;
+import com.asura.android_study.activity.constranitlayout.ConstraintLayoutTransitionActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -81,6 +83,10 @@ public class MainActivity extends BasePermissionActivity {
     Button mBtnCustomData;
     @BindView(R.id.font_content)
     LinearLayout mFontContent;
+    @BindView(R.id.btn_constraintLayout)
+    Button mBtnConstraintLayout;
+    @BindView(R.id.btn_constraint_transition)
+    Button mBtnConstraintTransition;
 
     private NetWorkReceiver mNetWorkReceiver;
     private ScrollerAdapter mScrollerAdapter;
@@ -115,7 +121,8 @@ public class MainActivity extends BasePermissionActivity {
     @OnClick({R.id.btn_open_qq, R.id.btn_open_email, R.id.btn_open_email_app, R.id.btn_set_wallpaper,
             R.id.btn_music_bind_service, R.id.btn_messenger_service, R.id.btn_rxJava, R.id.btn_leafAnim,
             R.id.btn_coordinatorLayout, R.id.btn_UCBehaviorActivity, R.id.btn_fragment_activity,
-            R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data})
+            R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data,
+            R.id.btn_constraintLayout, R.id.btn_constraint_transition})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_qq:
@@ -154,7 +161,7 @@ public class MainActivity extends BasePermissionActivity {
                 startActivity(new Intent(MainActivity.this, UCBehaviorActivity.class));
                 break;
             case R.id.btn_fragment_activity:
-                startActivity(new Intent(MainActivity.this, MyActivity.class));
+                startActivity(new Intent(MainActivity.this, Fragment2Activity.class));
                 break;
             case R.id.btn_item_type:
                 startActivity(new Intent(MainActivity.this, ItemTypeActivity.class));
@@ -167,6 +174,12 @@ public class MainActivity extends BasePermissionActivity {
                 break;
             case R.id.btn_custom_data:
                 startActivity(new Intent(MainActivity.this, CustomDataActivity.class));
+                break;
+            case R.id.btn_constraintLayout:
+                startActivity(new Intent(MainActivity.this, ConstraintLayoutActivity.class));
+                break;
+            case R.id.btn_constraint_transition:
+                startActivity(new Intent(MainActivity.this, ConstraintLayoutTransitionActivity.class));
                 break;
             default:
         }

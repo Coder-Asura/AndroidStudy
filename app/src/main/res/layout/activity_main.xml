@@ -101,6 +101,18 @@
             android:layout_height="wrap_content"
             android:text="自定义接收特定类型文件(.bin)"/>
 
+        <Button
+            android:id="@+id/btn_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ConstraintLayout"/>
+
+        <Button
+            android:id="@+id/btn_constraint_transition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ConstraintLayout 动画"/>
+
         <TextView
             android:id="@+id/tv_drawable"
             android:layout_width="wrap_content"

@@ -6,7 +6,8 @@
     android:id="@+id/contentPanel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConstraintLayoutTransitionActivity">
+    android:background="@color/white"
+    tools:context=".activity.constranitlayout.ConstraintLayoutTransitionActivity">
 
 
     <Button

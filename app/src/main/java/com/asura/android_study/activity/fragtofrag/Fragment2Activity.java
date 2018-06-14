@@ -15,7 +15,7 @@ import butterknife.BindView;
  * Created by Liuxd on 2016/11/1 21:04.
  */
 
-public class MyActivity extends BaseActivity implements MyListener {
+public class Fragment2Activity extends BaseActivity implements MyListener {
     @BindView(R.id.radioGroup)
     RadioGroup mRadioGroup;
     private Fragment1 mFragment1;

@@ -1,14 +1,15 @@
-package com.asura.customview_study
+package com.asura.android_study.activity.constranitlayout
 
 import android.os.Build
 import android.os.Bundle
 import android.support.constraint.ConstraintSet
 import android.support.v7.app.AppCompatActivity
 import android.transition.TransitionManager
+import com.asura.android_study.R
 import kotlinx.android.synthetic.main.activity_constraint_layout_transition_a.*
 
 /**
- * 画板页面
+ * 约束布局转场动画
  *
  * @author Created by Asura on 2018/6/13 13:35.
  */

@@ -24,7 +24,7 @@ public class LeafLoadingActivity extends BaseActivity implements OnSeekBarChange
         OnClickListener {
     @Override
     public int setLayoutId() {
-        return R.layout.leaf_loading_layout;
+        return R.layout.activity_leaf_loading_layout;
     }
 
     @Override
@@ -34,6 +34,7 @@ public class LeafLoadingActivity extends BaseActivity implements OnSeekBarChange
     }
 
     Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case REFRESH_PROGRESS:

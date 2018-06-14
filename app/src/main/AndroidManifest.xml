@@ -45,12 +45,14 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.behavior.CoordinatorLayoutActivity"/>
         <activity android:name=".activity.behavior.UCBehaviorActivity"/>
-        <activity android:name=".activity.fragtofrag.MyActivity"/>
+        <activity android:name=".activity.fragtofrag.Fragment2Activity"/>
         <activity android:name=".activity.itemtype.ItemTypeActivity"/>
         <activity android:name=".activity.viewpager.ViewPagerActivity"/>
         <activity android:name=".activity.BottomNavActivity"/>
         <activity android:name=".activity.LeafLoadingActivity"/>
         <activity android:name=".activity.RxJavaActivity"/>
+        <activity android:name=".activity.constranitlayout.ConstraintLayoutActivity"/>
+        <activity android:name=".activity.constranitlayout.ConstraintLayoutTransitionActivity"/>
 
         <service
             android:name=".service.music.MusicService"
