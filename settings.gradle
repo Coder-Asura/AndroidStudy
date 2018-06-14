@@ -1,2 +1,5 @@
 include ':app', ':jni-study', ':dagger2-study', ':dagger2-android-study',
-        ':jsoup-study', ':mvp-framework', ':customview-study',":greendao-study"
+        ':jsoup-study', ':mvp-framework', ':customview-study',':greendao-study'
+//这两个项目过于陈旧了，暂不维护了，以后再封装
+//        ':lib_baseapp',':common-app'
+
