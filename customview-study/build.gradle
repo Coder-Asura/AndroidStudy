@@ -18,7 +18,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_ENABLE", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
+            buildConfigField "boolean", "LOG_ENABLE", "true"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -32,9 +38,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
     implementation rootProject.ext.dependencies."appcompat-v7"
     implementation rootProject.ext.dependencies."constraint-layout"
+
+    implementation rootProject.ext.dependencies."statusbarUitl"
+    implementation 'com.r0adkll:slidableactivity:2.0.6'
+
+    implementation 'com.orhanobut:logger:1.15'
 }

@@ -7,5 +7,15 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:supportsRtl">true</item>
+        <!--去除标题栏-->
+        <!--<item name="windowNoTitle">true</item>-->
+        <!--<item name="android:windowActionBar">false</item>-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--禁止英文全部大写-->
+        <item name="textAllCaps">false</item>
+        <!--SwipeBack用到-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
     </style>
 </resources>
