@@ -3,6 +3,7 @@ package com.asura.customview_study.activity
 import android.content.Intent
 import android.view.View
 import com.asura.customview_study.R
+import com.asura.customview_study.activity.canvas.CanvasViewActivity
 import com.asura.customview_study.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
