@@ -21,6 +21,7 @@ class CanvasViewActivity : BaseActivity() {
         mutableList = mutableListOf()
 
         mutableList.add(CanvasModel(R.string.title_draw_color, R.layout.practice_color));
+        mutableList.add(CanvasModel(R.string.title_draw_canvas, R.layout.practice_canvas));
         mutableList.add(CanvasModel(R.string.title_draw_circle, R.layout.practice_circle));
         mutableList.add(CanvasModel(R.string.title_draw_rect, R.layout.practice_rect));
         mutableList.add(CanvasModel(R.string.title_draw_point, R.layout.practice_point));
@@ -30,6 +31,7 @@ class CanvasViewActivity : BaseActivity() {
         mutableList.add(CanvasModel(R.string.title_draw_path, R.layout.practice_path));
         mutableList.add(CanvasModel(R.string.title_draw_histogram, R.layout.practice_histogram));
         mutableList.add(CanvasModel(R.string.title_draw_pie_chart, R.layout.practice_pie_chart));
+        mutableList.add(CanvasModel(R.string.title_draw_text, R.layout.practice_text));
 
         viewpager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {

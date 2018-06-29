@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.asura.customview_study.utils.ALog;
@@ -78,23 +77,23 @@ public class AsuraView extends View {
 //        canvas.drawLine(120, 100, 260, 360, paint);
 //        canvas.drawPoints(new float[]{100, 200, 100, 300}, paint);
 //        canvas.drawRect(150, 200, 500, 400, paint);
-        RectF rectF = new RectF(0, 0, 720, 720);
-        canvas.drawRect(rectF, paint);
-        paint.setColor(Color.LTGRAY);
-        RectF rectF2 = new RectF(79, 79, 641, 641);
-        canvas.drawRect(rectF2, paint);
-        paint.setColor(Color.BLACK);
-        canvas.drawLine(0, 360, 720, 360, paint);
-        paint.setTextSize(40);
-        paint.setTextAlign(Paint.Align.CENTER);
-        Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
-        int distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
-        int baseline = (fontMetrics.bottom - fontMetrics.top) / 2 + distance;
-        int y = 720 - 79 + (79 - (fontMetrics.bottom - fontMetrics.top)) / 2 + baseline;
-//        int y = (int) (rectF2.centerY() - (fontMetrics.bottom + fontMetrics.top) / 2);
-        Log.d("lxd", "distance = " + distance + "  baseline = " + baseline + "  y = " + y);
-        canvas.drawText("My 二狗子", rectF2.centerX(), y, paint);
-        canvas.drawLine(0, y, 720, y, paint);
+//        RectF rectF = new RectF(0, 0, 720, 720);
+//        canvas.drawRect(rectF, paint);
+//        paint.setColor(Color.LTGRAY);
+//        RectF rectF2 = new RectF(79, 79, 641, 641);
+//        canvas.drawRect(rectF2, paint);
+//        paint.setColor(Color.BLACK);
+//        canvas.drawLine(0, 360, 720, 360, paint);
+//        paint.setTextSize(40);
+//        paint.setTextAlign(Paint.Align.CENTER);
+//        Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
+//        int distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
+//        int baseline = (fontMetrics.bottom - fontMetrics.top) / 2 + distance;
+//        int y = 720 - 79 + (79 - (fontMetrics.bottom - fontMetrics.top)) / 2 + baseline;
+////        int y = (int) (rectF2.centerY() - (fontMetrics.bottom + fontMetrics.top) / 2);
+//        Log.d("lxd", "distance = " + distance + "  baseline = " + baseline + "  y = " + y);
+//        canvas.drawText("My 二狗子", rectF2.centerX(), y, paint);
+//        canvas.drawLine(0, y, 720, y, paint);
 
 
 //        RectF rectf2 = new RectF(480, 450, 560, 800);
@@ -102,7 +101,7 @@ public class AsuraView extends View {
 ////        canvas.drawRoundRect(240,150,480,500,30,10,paint);
 //        canvas.drawRoundRect(rectf2, 40, 175, paint);
 
-/*        // 矩形
+        // 矩形
         RectF rectF = new RectF(100, 100, 800, 400);
 
 // 绘制背景矩形
@@ -120,16 +119,16 @@ public class AsuraView extends View {
         canvas.drawOval(rectF1, paint);
         paint.setColor(Color.RED);
         //绘制圆
-        canvas.drawCircle(500,500,200,paint);*/
+        canvas.drawCircle(500,500,200,paint);
 
-        /*//绘制圆弧，而不使用中心点则是圆弧起始点和结束点之间的连线加上圆弧围成的图形
+        //绘制圆弧，而不使用中心点则是圆弧起始点和结束点之间的连线加上圆弧围成的图形
         RectF rectF3 = new RectF(100, 100, 800, 800);
         canvas.drawArc(rectF3, 0, 90, false, paint);
         //使用了中心点之后绘制出来类似于一个扇形，
         RectF rectF4 = new RectF(100, 420, 800, 720);
-        canvas.drawArc(rectF4, 0, 90, true, paint);*/
+        canvas.drawArc(rectF4, 0, 90, true, paint);
 
-/*//不同的填充风格
+//不同的填充风格
         paint.setStrokeWidth(60f);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(170, 200, 100, paint);
@@ -137,12 +136,12 @@ public class AsuraView extends View {
         canvas.drawCircle(200, 500, 100, paint);
         //宽度的一半来合成
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        canvas.drawCircle(200, 800, 100, paint);*/
+        canvas.drawCircle(200, 800, 100, paint);
 
 
-//        paint.setStrokeWidth(2f);
-//        paint.setStyle(Paint.Style.STROKE);
-        /*//画布的变换
+        paint.setStrokeWidth(2f);
+        paint.setStyle(Paint.Style.STROKE);
+        //画布的变换
         //将远点移到中心处
         canvas.translate(mWidth / 2, mHeight / 2);
         canvas.drawCircle(0, 0, 300, paint);
@@ -152,7 +151,7 @@ public class AsuraView extends View {
         for (int i = 0; i < 3; i++) {
             canvas.rotate(90);
             canvas.drawLine(100, 0, 300, 0, paint);
-        }*/
+        }
 
         //缩放
 //        缩放比例(sx,sy)取值范围详解：
