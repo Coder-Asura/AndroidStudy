@@ -53,6 +53,8 @@
         <activity android:name=".activity.RxJavaActivity"/>
         <activity android:name=".activity.constranitlayout.ConstraintLayoutActivity"/>
         <activity android:name=".activity.constranitlayout.ConstraintLayoutTransitionActivity"/>
+        <activity android:name=".activity.album.AlbumActivity"/>
+        <activity android:name=".activity.threadpool.threadpool.ThreadPoolActivity"/>
 
         <service
             android:name=".service.music.MusicService"

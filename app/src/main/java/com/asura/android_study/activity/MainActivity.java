@@ -26,6 +26,7 @@ import com.asura.android_study.activity.behavior.CoordinatorLayoutActivity;
 import com.asura.android_study.activity.behavior.UCBehaviorActivity;
 import com.asura.android_study.activity.fragtofrag.Fragment2Activity;
 import com.asura.android_study.activity.itemtype.ItemTypeActivity;
+import com.asura.android_study.activity.threadpool.threadpool.ThreadPoolActivity;
 import com.asura.android_study.activity.viewpager.ViewPagerActivity;
 import com.asura.android_study.adapter.MailAppAdapter;
 import com.asura.android_study.adapter.ScrollerAdapter;
@@ -87,6 +88,8 @@ public class MainActivity extends BasePermissionActivity {
     Button mBtnConstraintLayout;
     @BindView(R.id.btn_constraint_transition)
     Button mBtnConstraintTransition;
+    @BindView(R.id.btn_threadPool)
+    Button mBtnThreadPool;
 
     private NetWorkReceiver mNetWorkReceiver;
     private ScrollerAdapter mScrollerAdapter;
@@ -122,7 +125,7 @@ public class MainActivity extends BasePermissionActivity {
             R.id.btn_music_bind_service, R.id.btn_messenger_service, R.id.btn_rxJava, R.id.btn_leafAnim,
             R.id.btn_coordinatorLayout, R.id.btn_UCBehaviorActivity, R.id.btn_fragment_activity,
             R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data,
-            R.id.btn_constraintLayout, R.id.btn_constraint_transition})
+            R.id.btn_constraintLayout, R.id.btn_constraint_transition, R.id.btn_threadPool})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_qq:
@@ -180,6 +183,9 @@ public class MainActivity extends BasePermissionActivity {
                 break;
             case R.id.btn_constraint_transition:
                 startActivity(new Intent(MainActivity.this, ConstraintLayoutTransitionActivity.class));
+                break;
+            case R.id.btn_threadPool:
+                startActivity(new Intent(MainActivity.this, ThreadPoolActivity.class));
                 break;
             default:
         }

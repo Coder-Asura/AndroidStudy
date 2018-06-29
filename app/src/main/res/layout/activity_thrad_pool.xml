@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_thread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thread"/>
+
+    <Button
+
+        android:id="@+id/btn_runnable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Runnable"/>
+
+    <Button
+        android:id="@+id/btn_callable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Callable"/>
+
+    <Button
+        android:id="@+id/btn_multy_thread_not_safe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多线程非安全"/>
+
+    <Button
+        android:id="@+id/btn_multy_thread_safe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多线程安全"/>
+
+    <Button
+        android:id="@+id/btn_newFixedThreadPool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="newFixedThreadPool"/>
+
+    <Button
+        android:id="@+id/btn_newSingleThreadExecutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="newSingleThreadExecutor"/>
+
+    <Button
+        android:id="@+id/btn_newCachedThreadPool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="newCachedThreadPool"/>
+
+    <Button
+        android:id="@+id/btn_newScheduledThreadPool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="newScheduledThreadPool"/>
+
+    <Button
+        android:id="@+id/btn_newSingleThreadScheduledExecutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="newSingleThreadScheduledExecutor"/>
+</LinearLayout>
