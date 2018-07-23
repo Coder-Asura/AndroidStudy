@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.orhanobut.logger.Logger;
+import com.asura.a_log.ALog;
 
 import butterknife.ButterKnife;
 
@@ -52,7 +52,7 @@ public abstract class BaseLazyFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         isPrepared = true;
         initPrepare();
-        Logger.d(TAG + "准备数据");
+        ALog.INSTANCE.d(TAG + "准备数据");
     }
 
     @Override
@@ -84,7 +84,7 @@ public abstract class BaseLazyFragment extends Fragment {
             return;
         }
         initData();
-        Logger.d(TAG + " 正式初始化");
+        ALog.INSTANCE.d(TAG + " 正式初始化");
         isFirst = false;
     }
 

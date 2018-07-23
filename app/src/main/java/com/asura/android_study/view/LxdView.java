@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
+import com.asura.a_log.ALog;
 
 /**
  * Created by Liuxd on 2016/9/28 9:47.
@@ -56,7 +56,7 @@ public class LxdView extends View {
         mHeight = MeasureSpec.getSize(heightMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
-        Logger.d("width=" + mWidth + "  widthMode=" + widthMode + "  height=" + mHeight + "  heightMode=" + heightMode);
+        ALog.INSTANCE.d("width=" + mWidth + "  widthMode=" + widthMode + "  height=" + mHeight + "  heightMode=" + heightMode);
     }
 
     @Override
@@ -191,6 +191,6 @@ public class LxdView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        Logger.d("onSizeChanged", w, h, oldw, oldh);
+        ALog.INSTANCE.d("onSizeChanged", "w=" + w + ",h=" + h + ",oldw=" + oldw + ",oldh=" + oldh);
     }
 }

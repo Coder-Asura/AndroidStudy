@@ -3,9 +3,9 @@ package com.asura.android_study.activity.viewpager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
+import com.asura.a_log.ALog;
 import com.asura.android_study.R;
 import com.asura.android_study.activity.base.BaseActivity;
-import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ public class ViewPagerActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Logger.d("position==" + position);
+                ALog.INSTANCE.d("position==" + position);
                 switch (position) {
                     case 0:
                         mLazyFragment1.setTv_name("111111111111111111111");

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <Button
+        android:id="@+id/btn_to_publish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动发布事件页面"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btn_to_publish"/>
+
+    <Button
+        android:id="@+id/btn_publish_sticky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="发布Sticky事件"
+        app:layout_constraintTop_toBottomOf="@id/tv_msg"/>
+
+    <Button
+        android:id="@+id/btn_to_sticky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="启动接收Sticky事件页面"
+        app:layout_constraintTop_toBottomOf="@id/btn_publish_sticky"/>
+
+    <Button
+        android:id="@+id/btn_to_priority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="启动设置事件优先级priority页面"
+        app:layout_constraintTop_toBottomOf="@id/btn_to_sticky"/>
+
+</android.support.constraint.ConstraintLayout>

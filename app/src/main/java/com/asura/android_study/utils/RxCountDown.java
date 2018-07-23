@@ -1,6 +1,6 @@
 package com.asura.android_study.utils;
 
-import com.orhanobut.logger.Logger;
+import com.asura.a_log.ALog;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +26,7 @@ public class RxCountDown {
 
                     @Override
                     public Integer apply(Long increaseTime) {
-                        Logger.d("increaseTime" + increaseTime);
+                        ALog.INSTANCE.d("increaseTime" + increaseTime);
                         if ((end - start) > 0) {
                             return end - increaseTime.intValue() - 1;
                         } else {
