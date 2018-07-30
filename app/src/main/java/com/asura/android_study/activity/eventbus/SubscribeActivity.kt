@@ -1,10 +1,15 @@
 package com.asura.android_study.activity.eventbus
 
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.view.View
 import com.asura.a_log.ALog
 import com.asura.android_study.R
 import com.asura.android_study.activity.base.BaseActivity
+import com.asura.android_study.activity.eventbus.event.MessageEvent
+import com.asura.android_study.activity.eventbus.event.NetStateEvent
+import com.asura.android_study.activity.eventbus.event.StickyEvent
 import kotlinx.android.synthetic.main.activity_subscribe.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -15,6 +20,9 @@ import org.greenrobot.eventbus.ThreadMode
  * 接收事件页面
  */
 class SubscribeActivity : BaseActivity(), View.OnClickListener {
+
+    var netWorkReceiver: NetWorkReceiver? = null
+
     override fun setLayoutId(): Int {
         return R.layout.activity_subscribe;
     }
@@ -82,13 +90,28 @@ class SubscribeActivity : BaseActivity(), View.OnClickListener {
         ALog.d("onAsyncMsgEvent:" + event.msg)
     }
 
+    //和广播通信
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    fun onNetWorkChanged(event: NetStateEvent) {
+        ALog.d("onNetWorkChanged:${event.state}")
+    }
+
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        netWorkReceiver = NetWorkReceiver();
+        registerReceiver(netWorkReceiver, intentFilter)
     }
 
     override fun onStop() {
         EventBus.getDefault().unregister(this)
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(netWorkReceiver)
     }
 }

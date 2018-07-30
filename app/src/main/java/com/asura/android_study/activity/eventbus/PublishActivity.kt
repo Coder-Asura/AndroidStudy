@@ -4,6 +4,7 @@ import android.view.View
 import com.asura.a_log.ALog
 import com.asura.android_study.R
 import com.asura.android_study.activity.base.BaseActivity
+import com.asura.android_study.activity.eventbus.event.MessageEvent
 import kotlinx.android.synthetic.main.activity_publish.*
 import org.greenrobot.eventbus.EventBus
 import kotlin.concurrent.thread

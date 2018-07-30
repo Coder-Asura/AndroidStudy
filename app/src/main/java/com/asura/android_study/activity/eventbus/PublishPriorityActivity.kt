@@ -4,6 +4,7 @@ import android.view.View
 import com.asura.a_log.ALog
 import com.asura.android_study.R
 import com.asura.android_study.activity.base.BaseActivity
+import com.asura.android_study.activity.eventbus.event.PriorityEvent
 import kotlinx.android.synthetic.main.activity_subscribe_priority.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

@@ -20,6 +20,7 @@ class CanvasViewActivity : BaseActivity() {
     override fun initView() {
         mutableList = mutableListOf()
 
+        mutableList.add(CanvasModel(R.string.title_draw_picture, R.layout.practice_picture));
         mutableList.add(CanvasModel(R.string.title_draw_color, R.layout.practice_color));
         mutableList.add(CanvasModel(R.string.title_draw_canvas, R.layout.practice_canvas));
         mutableList.add(CanvasModel(R.string.title_draw_circle, R.layout.practice_circle));

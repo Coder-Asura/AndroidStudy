@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -55,5 +56,24 @@ public class Practice12DrawTextView extends View {
         Log.d("lxd", "distance = " + distance + "  baseline = " + baseline + "  y = " + y);
         canvas.drawText("My 二狗子", rectF2.centerX(), y, paint);
         canvas.drawLine(0, y, 720, y, paint);
+
+        //平移坐标
+        canvas.translate(0, 750);
+        paint.setTextAlign(Paint.Align.LEFT);
+        String string = "ABCDEFG";
+        //基线x、y
+        canvas.drawText(string, 100, 20, paint);
+        //截取部分文字
+        canvas.drawText(string, 1, 3, 100, 60, paint);
+        //过时方法，不再使用
+//        canvas.drawPosText();
+
+        Path path = new Path();
+        RectF rectF1 = new RectF(0, 0, 300, 300);
+        path.addArc(rectF1, 0, 90);
+//        canvas.drawRect(rectF1, paint);
+        canvas.drawPath(path,paint);
+        canvas.drawTextOnPath(string, path, 30, 0, paint);
+
     }
 }

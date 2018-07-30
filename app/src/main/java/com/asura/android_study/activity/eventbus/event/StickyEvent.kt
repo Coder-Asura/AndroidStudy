@@ -1,4 +1,4 @@
-package com.asura.android_study.activity.eventbus
+package com.asura.android_study.activity.eventbus.event
 
 /**
  * 黏性事件
