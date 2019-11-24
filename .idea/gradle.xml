@@ -14,12 +14,14 @@
             <option value="$PROJECT_DIR$/dagger2-android-study" />
             <option value="$PROJECT_DIR$/dagger2-study" />
             <option value="$PROJECT_DIR$/greendao-study" />
+            <option value="$PROJECT_DIR$/guessnumber" />
             <option value="$PROJECT_DIR$/jni-study" />
             <option value="$PROJECT_DIR$/jsoup-study" />
             <option value="$PROJECT_DIR$/mvp-framework" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>

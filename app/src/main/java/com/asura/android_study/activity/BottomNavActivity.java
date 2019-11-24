@@ -2,9 +2,9 @@ package com.asura.android_study.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 
 import com.asura.android_study.R;
 import com.asura.android_study.activity.base.BaseActivity;
@@ -13,6 +13,7 @@ import com.asura.android_study.activity.fragtofrag.Fragment2;
 import com.asura.android_study.activity.fragtofrag.Fragment3;
 import com.asura.android_study.activity.fragtofrag.Fragment4;
 import com.asura.android_study.activity.fragtofrag.MyListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
 

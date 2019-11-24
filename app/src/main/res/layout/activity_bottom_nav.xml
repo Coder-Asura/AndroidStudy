@@ -14,7 +14,7 @@
 
     </FrameLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         app:itemTextColor="@color/white"
         app:menu="@menu/menu_nav">
 
-    </android.support.design.widget.BottomNavigationView>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </LinearLayout>
 
     <!--app:theme="@style/Widget.Design.BottomNavigationView"-->

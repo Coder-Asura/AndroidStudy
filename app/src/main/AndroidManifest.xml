@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.asura.android_study">
+    package="com.asura.android_study">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
         android:name=".application.MyApplication"
@@ -17,56 +17,57 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.CustomDataActivity"
             android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="com.asura.promote.CustomDataActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.asura.promote.CustomDataActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="application/octet-stream"/>
-                <data android:scheme="content"/>
+                <data android:mimeType="application/octet-stream" />
+                <data android:scheme="content" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".service.music.MusicActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".service.music.MessengerActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.behavior.CoordinatorLayoutActivity"/>
-        <activity android:name=".activity.behavior.UCBehaviorActivity"/>
-        <activity android:name=".activity.fragtofrag.Fragment2Activity"/>
-        <activity android:name=".activity.itemtype.ItemTypeActivity"/>
-        <activity android:name=".activity.viewpager.ViewPagerActivity"/>
-        <activity android:name=".activity.BottomNavActivity"/>
-        <activity android:name=".activity.LeafLoadingActivity"/>
-        <activity android:name=".activity.RxJavaActivity"/>
-        <activity android:name=".activity.constranitlayout.ConstraintLayoutActivity"/>
-        <activity android:name=".activity.constranitlayout.ConstraintLayoutTransitionActivity"/>
-        <activity android:name=".activity.album.AlbumActivity"/>
-        <activity android:name=".activity.threadpool.threadpool.ThreadPoolActivity"/>
-        <activity android:name=".activity.eventbus.SubscribeActivity"/>
-        <activity android:name=".activity.eventbus.PublishActivity"/>
-        <activity android:name=".activity.eventbus.StickyActivity"/>
-        <activity android:name=".activity.eventbus.PublishPriorityActivity"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.behavior.CoordinatorLayoutActivity" />
+        <activity android:name=".activity.behavior.UCBehaviorActivity" />
+        <activity android:name=".activity.fragtofrag.Fragment2Activity" />
+        <activity android:name=".activity.itemtype.ItemTypeActivity" />
+        <activity android:name=".activity.viewpager.ViewPagerActivity" />
+        <activity android:name=".activity.BottomNavActivity" />
+        <activity android:name=".activity.LeafLoadingActivity" />
+        <activity android:name=".activity.RxJavaActivity" />
+        <activity android:name=".activity.constranitlayout.ConstraintLayoutActivity" />
+        <activity android:name=".activity.constranitlayout.ConstraintLayoutTransitionActivity" />
+        <activity android:name=".activity.album.AlbumActivity" />
+        <activity android:name=".activity.threadpool.threadpool.ThreadPoolActivity" />
+        <activity android:name=".activity.threadpool.step1.MainActivity" />
+        <activity android:name=".activity.eventbus.SubscribeActivity" />
+        <activity android:name=".activity.eventbus.PublishActivity" />
+        <activity android:name=".activity.eventbus.StickyActivity" />
+        <activity android:name=".activity.eventbus.PublishPriorityActivity" />
 
         <service
             android:name=".service.music.MusicService"
-            android:enabled="true"/>
+            android:enabled="true" />
         <service
             android:name=".service.music.MessengerService"
-            android:enabled="true"/>
+            android:enabled="true" />
 
         <!-- 配置实时壁纸Service -->
         <service
@@ -75,12 +76,12 @@
             android:permission="android.permission.BIND_WALLPAPER">
             <!-- 为实时壁纸配置intent-filter -->
             <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService"/>
+                <action android:name="android.service.wallpaper.WallpaperService" />
             </intent-filter>
             <!-- 为实时壁纸配置meta-data -->
             <meta-data
                 android:name="android.service.wallpaper"
-                android:resource="@xml/livewallpaper"/>
+                android:resource="@xml/livewallpaper" />
         </service>
     </application>
 

@@ -1,8 +1,8 @@
 package com.asura.mvp_framework.support.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.asura.mvp_framework.base.presenter.IMvpPresenter;
 import com.asura.mvp_framework.base.view.IMvpView;

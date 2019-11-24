@@ -1,7 +1,7 @@
 package com.asura.jsoup_study.ui.main
 
-import android.support.v4.app.Fragment
-import android.support.v4.util.SparseArrayCompat
+import androidx.core.app.Fragment
+import androidx.core.util.SparseArrayCompat
 import com.asura.jsoup_study.ui.main.new.NewGirlFragment
 
 /**

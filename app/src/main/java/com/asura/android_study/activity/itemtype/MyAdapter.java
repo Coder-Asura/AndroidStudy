@@ -1,8 +1,9 @@
 package com.asura.android_study.activity.itemtype;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.asura.android_study.R;
 

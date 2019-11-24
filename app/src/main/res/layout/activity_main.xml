@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -114,10 +114,16 @@
             android:text="ConstraintLayout 动画"/>
 
         <Button
-            android:id="@+id/btn_threadPool"
+            android:id="@+id/btn_threadPool1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="线程、线程池"/>
+            android:text="线程、线程池1"/>
+
+        <Button
+            android:id="@+id/btn_threadPool2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="线程、线程池2"/>
 
         <Button
             android:id="@+id/btn_event_bus"
@@ -173,4 +179,4 @@
             android:layout_width="300dp"
             android:layout_height="300dp"/>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

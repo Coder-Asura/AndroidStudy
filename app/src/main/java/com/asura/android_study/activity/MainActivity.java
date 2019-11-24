@@ -13,17 +13,20 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.asura.android_study.R;
 import com.asura.android_study.activity.base.BasePermissionActivity;
 import com.asura.android_study.activity.behavior.CoordinatorLayoutActivity;
 import com.asura.android_study.activity.behavior.UCBehaviorActivity;
+import com.asura.android_study.activity.constranitlayout.ConstraintLayoutActivity;
+import com.asura.android_study.activity.constranitlayout.ConstraintLayoutTransitionActivity;
 import com.asura.android_study.activity.eventbus.SubscribeActivity;
 import com.asura.android_study.activity.fragtofrag.Fragment2Activity;
 import com.asura.android_study.activity.itemtype.ItemTypeActivity;
@@ -37,8 +40,6 @@ import com.asura.android_study.service.music.MusicActivity;
 import com.asura.android_study.utils.FontHelper;
 import com.asura.android_study.view.CameraLiveWallpaper;
 import com.asura.android_study.view.HorizontalListView;
-import com.asura.android_study.activity.constranitlayout.ConstraintLayoutActivity;
-import com.asura.android_study.activity.constranitlayout.ConstraintLayoutTransitionActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -89,8 +90,10 @@ public class MainActivity extends BasePermissionActivity {
     Button mBtnConstraintLayout;
     @BindView(R.id.btn_constraint_transition)
     Button mBtnConstraintTransition;
-    @BindView(R.id.btn_threadPool)
-    Button mBtnThreadPool;
+    @BindView(R.id.btn_threadPool1)
+    Button mBtnThreadPool1;
+    @BindView(R.id.btn_threadPool2)
+    Button mBtnThreadPoo2;
     @BindView(R.id.btn_event_bus)
     Button mBtnEventBus;
 
@@ -128,7 +131,8 @@ public class MainActivity extends BasePermissionActivity {
             R.id.btn_music_bind_service, R.id.btn_messenger_service, R.id.btn_rxJava, R.id.btn_leafAnim,
             R.id.btn_coordinatorLayout, R.id.btn_UCBehaviorActivity, R.id.btn_fragment_activity,
             R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data,
-            R.id.btn_constraintLayout, R.id.btn_constraint_transition, R.id.btn_threadPool, R.id.btn_event_bus})
+            R.id.btn_constraintLayout, R.id.btn_constraint_transition, R.id.btn_threadPool1,
+            R.id.btn_threadPool2, R.id.btn_event_bus})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_qq:
@@ -187,7 +191,10 @@ public class MainActivity extends BasePermissionActivity {
             case R.id.btn_constraint_transition:
                 startActivity(new Intent(MainActivity.this, ConstraintLayoutTransitionActivity.class));
                 break;
-            case R.id.btn_threadPool:
+            case R.id.btn_threadPool1:
+                startActivity(new Intent(MainActivity.this, com.asura.android_study.activity.threadpool.step1.MainActivity.class));
+                break;
+            case R.id.btn_threadPool2:
                 startActivity(new Intent(MainActivity.this, ThreadPoolActivity.class));
                 break;
             case R.id.btn_event_bus:

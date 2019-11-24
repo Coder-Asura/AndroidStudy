@@ -21,7 +21,7 @@ android {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         flavorDimensions "channel"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -63,6 +63,7 @@ android {
             }
         }
     }
+
     productFlavors {
         _release {
             dimension "channel"
@@ -76,6 +77,11 @@ android {
             versionCode baseVersionCode
             versionName "$baseVersionName"
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

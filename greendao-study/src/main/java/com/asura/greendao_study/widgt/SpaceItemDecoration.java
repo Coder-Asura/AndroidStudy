@@ -2,7 +2,7 @@ package com.asura.greendao_study.widgt;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.widget.RecyclerView;
 import android.view.View;
 
 import com.asura.greendao_study.utils.UIUtils;

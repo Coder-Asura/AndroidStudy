@@ -1,7 +1,8 @@
 package com.asura.android_study.activity.multitype;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.asura.android_study.R;
 

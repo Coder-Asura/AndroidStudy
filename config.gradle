@@ -8,7 +8,7 @@ ext {
     dependVersion = [
             androidx   : "1.1.0",
             retrofit2  : "2.6.2",
-            butterknife: "8.8.1",
+            butterknife: "10.2.0",
     ]
     dependencies = [ // ------------- Android -------------
                      "appcompat"               : "androidx.appcompat:appcompat:${dependVersion.androidx}",

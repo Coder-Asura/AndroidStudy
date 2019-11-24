@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/dagger2-android-study/dagger2-android-study.iml" filepath="$PROJECT_DIR$/dagger2-android-study/dagger2-android-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagger2-study/dagger2-study.iml" filepath="$PROJECT_DIR$/dagger2-study/dagger2-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendao-study/greendao-study.iml" filepath="$PROJECT_DIR$/greendao-study/greendao-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guessnumber/guessnumber.iml" filepath="$PROJECT_DIR$/guessnumber/guessnumber.iml" />
       <module fileurl="file://$PROJECT_DIR$/jni-study/jni-study.iml" filepath="$PROJECT_DIR$/jni-study/jni-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsoup-study/jsoup-study.iml" filepath="$PROJECT_DIR$/jsoup-study/jsoup-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp-framework/mvp-framework.iml" filepath="$PROJECT_DIR$/mvp-framework/mvp-framework.iml" />

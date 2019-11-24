@@ -1,6 +1,6 @@
 package com.asura.android_study.activity.multitype.base;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Liuxd on 2017/7/20 13:25.

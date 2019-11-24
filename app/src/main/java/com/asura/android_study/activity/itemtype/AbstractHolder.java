@@ -1,7 +1,8 @@
 package com.asura.android_study.activity.itemtype;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Liuxd on 2016/11/20 18:19.

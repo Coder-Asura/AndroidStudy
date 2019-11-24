@@ -1,10 +1,11 @@
 package com.asura.android_study.activity.behavior;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 /**
  * Created by Liuxd on 2016/11/10 15:32.

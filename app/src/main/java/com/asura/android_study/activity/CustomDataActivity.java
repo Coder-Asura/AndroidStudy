@@ -6,9 +6,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.asura.android_study.R;
 
@@ -35,11 +36,11 @@ public class CustomDataActivity extends AppCompatActivity {
             if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)) {
                 Uri uri = intent.getData();
                 Log.d("Asura", "收到了12" + uri.toString());
-                tvInfo.setText(tvInfo.getText()+"\n\n"+"收到12：" + uri.toString());
+                tvInfo.setText(tvInfo.getText() + "\n\n" + "收到12：" + uri.toString());
 //               String name= getRealPathFromUri(MainActivity.this,uri);
                 String name = getFilePathFromContentUri(CustomDataActivity.this, uri);
                 Log.d("Asura", "收到了13" + name);
-                tvInfo.setText(tvInfo.getText()+"\n\n"+"收到13：" + name);
+                tvInfo.setText(tvInfo.getText() + "\n\n" + "收到13：" + name);
             }
         }
     }
@@ -56,11 +57,11 @@ public class CustomDataActivity extends AppCompatActivity {
             if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)) {
                 Uri uri = intent.getData();
                 Log.d("Asura", "收到了22" + uri.toString());
-                tvInfo.setText(tvInfo.getText()+"\n\n"+"收到22：" + uri.toString());
+                tvInfo.setText(tvInfo.getText() + "\n\n" + "收到22：" + uri.toString());
 //               String name= getRealPathFromUri(MainActivity.this,uri);
                 String name = getFilePathFromContentUri(CustomDataActivity.this, uri);
                 Log.d("Asura", "收到了23" + name);
-                tvInfo.setText(tvInfo.getText()+"\n\n"+"收到23：" + name);
+                tvInfo.setText(tvInfo.getText() + "\n\n" + "收到23：" + name);
             }
         }
     }

@@ -1,11 +1,11 @@
 package com.asura.android_study.activity.viewpager;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.asura.a_log.ALog;
 import com.asura.android_study.R;
 import com.asura.android_study.activity.base.BaseActivity;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;

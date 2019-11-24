@@ -3,8 +3,8 @@ package com.asura.jsoup_study.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.support.design.widget.NavigationView
-import android.support.v4.app.FragmentTransaction
-import android.support.v4.view.GravityCompat
+import androidx.core.app.FragmentTransaction
+import androidx.core.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.GestureDetector
 import android.view.MenuItem
