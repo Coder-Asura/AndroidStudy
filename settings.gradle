@@ -1,6 +1,13 @@
-include ':guessnumber'
-//include 'a-log', ':app', ':customview-study', ':dagger2-android-study', ':dagger2-study',
-//        ':greendao-study', ':jni-study', ':jsoup-study', ':mvp-framework'
+//include ':a-log'
+//include ':app'
+//include ':customview-study'
+//include ':dagger2-android-study'
+//include ':dagger2-study'
+//include ':greendao-study'
+//include ':guessnumber'
+//include ':jni-study'
+include ':jsoup-study'
+include ':mvp-framework'
 //这两个项目过于陈旧了，暂不维护了，以后再封装
 //        ':lib_baseapp',':common-app'
 
