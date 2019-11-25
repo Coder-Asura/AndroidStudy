@@ -26,6 +26,11 @@ android {
 //        设置DaoMaster、DaoSession、Dao目录
         targetGenDir 'src/main/java'
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
