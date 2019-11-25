@@ -1,11 +1,11 @@
 package com.asura.jsoup_study.base
 
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
+import androidx.appcompat.widget.Toolbar
 import com.asura.jsoup_study.R
 import com.asura.jsoup_study.util.UiUtils
 import com.asura.mvp_framework.base.presenter.IMvpPresenter

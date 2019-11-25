@@ -1,8 +1,8 @@
 package com.asura.jsoup_study.base
 
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.annotation.CheckResult
+import androidx.annotation.CallSuper
+import androidx.annotation.CheckResult
 import com.asura.mvp_framework.base.presenter.IMvpPresenter
 import com.asura.mvp_framework.base.view.IMvpView
 import com.trello.rxlifecycle2.LifecycleProvider

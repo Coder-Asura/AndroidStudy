@@ -1,12 +1,12 @@
 package com.asura.jsoup_study.ui.main.new
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.asura.jsoup_study.R
 import com.asura.jsoup_study.bean.NewGirl
 import com.asura.jsoup_study.util.ImageUtils
@@ -45,9 +45,9 @@ class NewGirlAdapter() : RecyclerView.Adapter<NewGirlAdapter.NewGirlViewHolder>(
     }
 
 
-    inner class NewGirlViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        var tv_girl_title = itemView?.findViewById<TextView>(R.id.tv_girl_title)
-        var iv_new_girl = itemView?.findViewById<ImageView>(R.id.iv_new_girl)
+    inner class NewGirlViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var tv_girl_title = itemView.findViewById<TextView>(R.id.tv_girl_title)
+        var iv_new_girl = itemView.findViewById<ImageView>(R.id.iv_new_girl)
     }
 
     interface Callback {

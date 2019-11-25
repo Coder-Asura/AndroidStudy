@@ -1,7 +1,9 @@
 package com.asura.jsoup_study.ui.main.new
 
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.asura.jsoup_study.R
 import com.asura.jsoup_study.base.BaseRxLifecycleFragment
 import com.asura.jsoup_study.bean.NewGirl
@@ -21,19 +23,19 @@ class NewGirlFragment : BaseRxLifecycleFragment<INewGirlView, NewGirlPresenter>(
 
     override fun initViews(rootView: View) {
         data = ArrayList()
-        swipe_new_girl.setOnRefreshListener {
+        (swipe_new_girl as SwipeRefreshLayout).setOnRefreshListener {
             currentPage++
             loadData(false, currentPage, PAGE_SIZE)
             showLoadingView()
         }
-        rv_new_girl.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        (rv_new_girl as RecyclerView).layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         adapter = NewGirlAdapter(getAc(), data, object : NewGirlAdapter.Callback {
             override fun onItemClick(position: Int) {
                 toastShort("点击了$position 套图下次做")
             }
         })
-        rv_new_girl.adapter = adapter
+        (rv_new_girl as RecyclerView).adapter = adapter
     }
 
     override fun initDatas() {
@@ -43,7 +45,7 @@ class NewGirlFragment : BaseRxLifecycleFragment<INewGirlView, NewGirlPresenter>(
     }
 
     override fun showLoadingView() {
-        swipe_new_girl.isRefreshing = false
+        (swipe_new_girl as SwipeRefreshLayout).isRefreshing = false
     }
 
     override fun showEmptyView() {
@@ -54,7 +56,7 @@ class NewGirlFragment : BaseRxLifecycleFragment<INewGirlView, NewGirlPresenter>(
     }
 
     override fun showContentView() {
-        swipe_new_girl.isRefreshing = false
+        (swipe_new_girl as SwipeRefreshLayout).isRefreshing = false
     }
 
     override fun showData(data: List<NewGirl>) {
@@ -75,7 +77,7 @@ class NewGirlFragment : BaseRxLifecycleFragment<INewGirlView, NewGirlPresenter>(
         rv_new_girl.post {
             run {
 //                rv_new_girl.scrollToPosition(0)
-                rv_new_girl.smoothScrollToPosition(0)
+                (rv_new_girl as RecyclerView).smoothScrollToPosition(0)
             }
         }
     }

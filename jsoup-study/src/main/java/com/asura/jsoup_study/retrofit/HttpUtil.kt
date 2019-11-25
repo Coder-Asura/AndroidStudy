@@ -52,8 +52,10 @@ class HttpUtil {
             //日志显示级别
             val level = if (BuildConfig.LOG_ENABLE) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             //新建log拦截器
-            val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
-                ALog.d("RxRetrofit", message)
+            val loggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                override fun log(message: String) {
+                    ALog.d("RxRetrofit", message)
+                }
             })
             loggingInterceptor.level = level
             return loggingInterceptor

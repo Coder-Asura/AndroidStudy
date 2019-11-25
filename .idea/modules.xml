@@ -3,15 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidStudy.iml" filepath="$PROJECT_DIR$/AndroidStudy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/a-log/AndroidStudy-a-log.iml" filepath="$PROJECT_DIR$/a-log/AndroidStudy-a-log.iml" />
-      <module fileurl="file://$PROJECT_DIR$/a-log/a-log.iml" filepath="$PROJECT_DIR$/a-log/a-log.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/customview-study/customview-study.iml" filepath="$PROJECT_DIR$/customview-study/customview-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dagger2-android-study/dagger2-android-study.iml" filepath="$PROJECT_DIR$/dagger2-android-study/dagger2-android-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dagger2-study/dagger2-study.iml" filepath="$PROJECT_DIR$/dagger2-study/dagger2-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/greendao-study/greendao-study.iml" filepath="$PROJECT_DIR$/greendao-study/greendao-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/guessnumber/guessnumber.iml" filepath="$PROJECT_DIR$/guessnumber/guessnumber.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jni-study/jni-study.iml" filepath="$PROJECT_DIR$/jni-study/jni-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsoup-study/jsoup-study.iml" filepath="$PROJECT_DIR$/jsoup-study/jsoup-study.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp-framework/mvp-framework.iml" filepath="$PROJECT_DIR$/mvp-framework/mvp-framework.iml" />
     </modules>

@@ -8,14 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/a-log" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/customview-study" />
-            <option value="$PROJECT_DIR$/dagger2-android-study" />
-            <option value="$PROJECT_DIR$/dagger2-study" />
-            <option value="$PROJECT_DIR$/greendao-study" />
-            <option value="$PROJECT_DIR$/guessnumber" />
-            <option value="$PROJECT_DIR$/jni-study" />
             <option value="$PROJECT_DIR$/jsoup-study" />
             <option value="$PROJECT_DIR$/mvp-framework" />
           </set>

@@ -2,19 +2,20 @@ package com.asura.jsoup_study.ui.main
 
 import android.content.Intent
 import android.net.Uri
-import android.support.design.widget.NavigationView
-import androidx.core.app.FragmentTransaction
 import androidx.core.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import android.view.GestureDetector
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentTransaction
 import com.asura.jsoup_study.R
 import com.asura.jsoup_study.base.BaseActivity
 import com.asura.jsoup_study.config.Constant
 import com.asura.jsoup_study.ui.main.new.NewGirlFragment
 import com.asura.jsoup_study.util.AppUtils
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -69,9 +70,9 @@ class MainActivity : BaseActivity<IMainView, MainPresenter>(), IMainView, Naviga
     }
 
     private fun loadMenuData() {
-        val toggle = ActionBarDrawerToggle(this, drawer_layout,
+        val toggle = ActionBarDrawerToggle(this, drawer_layout as DrawerLayout?,
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
+        (drawer_layout as DrawerLayout?)?.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.menu.findItem(R.id.nav_about).title = String.format(getString(R.string.nav_about),
                 AppUtils.getAppVersion(this));
@@ -126,7 +127,7 @@ class MainActivity : BaseActivity<IMainView, MainPresenter>(), IMainView, Naviga
                 toastShort("App 版本：V$version")
             }
         }
-        drawer_layout.closeDrawer(GravityCompat.START, true)
+        (drawer_layout as DrawerLayout).closeDrawer(GravityCompat.START, true)
         return true
     }
 
@@ -143,9 +144,9 @@ class MainActivity : BaseActivity<IMainView, MainPresenter>(), IMainView, Naviga
             0 -> if (newGirlFragment == null) {
                 newGirlFragment = FragmentFactory
                         .createFragment(FragmentFactory.INDEX_FRAGMENT_NEW_GIRL) as NewGirlFragment
-                transaction.add(R.id.main_content, newGirlFragment, FragmentFactory.TAG_FRAGMENT_NEW_GIRL)
+                transaction.add(R.id.main_content, newGirlFragment!!, FragmentFactory.TAG_FRAGMENT_NEW_GIRL)
             } else {
-                transaction.show(newGirlFragment)
+                transaction.show(newGirlFragment!!)
             }
             1 -> {
 
@@ -161,7 +162,7 @@ class MainActivity : BaseActivity<IMainView, MainPresenter>(), IMainView, Naviga
      */
     private fun hideFragment(transaction: FragmentTransaction) {
         if (newGirlFragment != null) {
-            transaction.hide(newGirlFragment)
+            transaction.hide(newGirlFragment!!)
         }
     }
 }

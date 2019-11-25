@@ -23,12 +23,14 @@
 package com.asura.jsoup_study.view.behavior;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.ViewPropertyAnimatorListener;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorListener;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 // FAB 行为控制器
 public class ScaleDownShowBehavior extends FloatingActionButton.Behavior {
@@ -40,7 +42,7 @@ public class ScaleDownShowBehavior extends FloatingActionButton.Behavior {
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout,
                                        FloatingActionButton child, View directTargetChild,
                                        View target, int nestedScrollAxes) {
-        if (nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL){
+        if (nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL) {
             return true;
         }
         return super.onStartNestedScroll(coordinatorLayout, child, directTargetChild,

@@ -1,8 +1,8 @@
 package com.asura.jsoup_study.base
 
 import android.os.Bundle
-import android.support.annotation.CheckResult
 import android.view.View
+import androidx.annotation.CheckResult
 import com.asura.mvp_framework.base.presenter.IMvpPresenter
 import com.asura.mvp_framework.base.view.IMvpView
 import com.trello.rxlifecycle2.LifecycleProvider
@@ -35,7 +35,7 @@ abstract class BaseRxLifecycleFragment<V : IMvpView, P : IMvpPresenter<V>> : Bas
         return RxLifecycleAndroid.bindFragment(lifecycleSubject)
     }
 
-    override fun onAttach(activity: android.app.Activity?) {
+    override fun onAttach(activity: android.app.Activity) {
         super.onAttach(activity)
         lifecycleSubject.onNext(FragmentEvent.ATTACH)
     }

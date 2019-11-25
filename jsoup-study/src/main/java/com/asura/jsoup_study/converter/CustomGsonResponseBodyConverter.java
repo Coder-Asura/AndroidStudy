@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
@@ -47,7 +48,7 @@ public class CustomGsonResponseBodyConverter<T> implements Converter<ResponseBod
         }
 
         MediaType contentType = responseBody.contentType();
-        Charset charset = contentType != null ? contentType.charset(Util.UTF_8) : Util.UTF_8;
+        Charset charset = contentType != null ? contentType.charset(StandardCharsets.UTF_8) : StandardCharsets.UTF_8;
         InputStream inputStream = new ByteArrayInputStream(response.getBytes());
         Reader reader = new InputStreamReader(inputStream, charset);
         JsonReader jsonReader = gson.newJsonReader(reader);

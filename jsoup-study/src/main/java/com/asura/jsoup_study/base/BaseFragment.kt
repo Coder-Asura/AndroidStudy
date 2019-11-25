@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import com.asura.jsoup_study.util.ALog
 import com.asura.jsoup_study.util.UiUtils
 import com.asura.mvp_framework.base.presenter.IMvpPresenter
@@ -58,13 +58,13 @@ abstract class BaseFragment<V : IMvpView, P : IMvpPresenter<V>> : BaseMvpFragmen
         return false
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         ALog.t("生命周期", TAG, "onAttach(Context context)")
         onAttachToContext(context)
     }
 
-    override fun onAttach(activity: Activity?) {
+    override fun onAttach(activity: Activity) {
         super.onAttach(activity)
         ALog.t("生命周期", TAG, "onAttach(Activity activity)")
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {

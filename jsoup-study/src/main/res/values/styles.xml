@@ -48,7 +48,7 @@
         <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
     </style>
 
-    <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
+    <style name="TabLayoutTextStyle" parent="Widget.AppCompat.ActionBar.TabText">
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="textAllCaps">false</item>
     </style>

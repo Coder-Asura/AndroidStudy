@@ -1,5 +1,6 @@
 package com.asura.jsoup_study.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -64,6 +65,7 @@ public class AppUtils {
 
     }
 
+    @SuppressLint("MissingPermission")
     private static String getIMEI(Context context) {
         TelephonyManager telephonyManager = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);

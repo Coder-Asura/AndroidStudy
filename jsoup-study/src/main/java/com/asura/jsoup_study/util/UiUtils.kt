@@ -4,12 +4,12 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
 import android.text.TextUtils
 import android.util.DisplayMetrics
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.asura.jsoup_study.MyApplication
 
 /**
