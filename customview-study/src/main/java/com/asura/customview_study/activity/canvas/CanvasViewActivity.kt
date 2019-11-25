@@ -1,7 +1,7 @@
 package com.asura.customview_study.activity.canvas
 
-import androidx.core.app.Fragment
-import androidx.core.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import com.asura.customview_study.R
 import com.asura.customview_study.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_canvas_view.*

@@ -47,7 +47,7 @@ class DrawingBoardView @JvmOverloads constructor(context: Context, attrs: Attrib
     private fun draw() {
         val canvas = holder.lockCanvas()
         canvas.drawColor(Color.WHITE)
-        canvas.drawPath(mPath, mPaint)
+        canvas.drawPath(mPath!!, mPaint!!)
         holder.unlockCanvasAndPost(canvas)
     }
 

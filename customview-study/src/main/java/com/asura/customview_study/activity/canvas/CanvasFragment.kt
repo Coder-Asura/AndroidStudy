@@ -1,11 +1,11 @@
 package com.asura.customview_study.activity.canvas
 
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import androidx.core.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
 import com.asura.customview_study.R
 import kotlinx.android.synthetic.main.fragment_canvas.*
 
