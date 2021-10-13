@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fed255"
-    android:orientation="vertical" >
+    android:background="#ffffff"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,11 +18,13 @@
         android:id="@+id/leaf_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp" >
+        android:layout_marginTop="50dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
 
         <com.asura.android_study.view.LeafLoadingView
             android:id="@+id/leaf_loading"
-            android:layout_width="302dp"
+            android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_centerHorizontal="true" />
 
@@ -30,28 +32,28 @@
             android:id="@+id/fan_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="35dp"
+            android:layout_marginEnd="6dp"
             android:src="@mipmap/fengshan" />
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/seek_content_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp" >
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp">
 
                 <TextView
                     android:id="@+id/text_ampair"
@@ -73,9 +75,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/text_disparity"
@@ -97,9 +99,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/text_float_time"
@@ -121,9 +123,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/text_rotate_time"
@@ -153,9 +155,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/add_progress"

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:chainUseRtl="true"
     android:background="@color/white"
+    app:chainUseRtl="true"
     tools:context=".activity.constranitlayout.ConstraintLayoutActivity">
 
     <Button
@@ -20,14 +19,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_max="200dp"
-        app:layout_constraintWidth_min="100dp"/>
+        app:layout_constraintWidth_min="100dp" />
 
     <TextView
         android:id="@+id/tv1"
         android:layout_width="120dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
         android:gravity="center"
@@ -35,17 +34,17 @@
         app:layout_constraintBottom_toBottomOf="@id/tv3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn1"/>
+        app:layout_constraintTop_toBottomOf="@id/btn1" />
 
     <TextView
         android:id="@+id/tv2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="start"
         android:maxLines="3"
         android:text="位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束位置约束"
@@ -54,17 +53,17 @@
         app:layout_constraintLeft_toRightOf="@id/tv1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv1"
-        app:layout_constraintTop_toBottomOf="@id/btn1"/>
+        app:layout_constraintTop_toBottomOf="@id/btn1" />
 
     <TextView
         android:id="@+id/tv3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="start"
         android:singleLine="true"
         android:text="位置约束"
@@ -73,28 +72,28 @@
         app:layout_constraintLeft_toRightOf="@id/tv1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv1"
-        app:layout_constraintTop_toBottomOf="@id/tv2"/>
+        app:layout_constraintTop_toBottomOf="@id/tv2" />
 
     <TextView
         android:id="@+id/tv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"
         android:text="name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv1"/>
+        app:layout_constraintTop_toBottomOf="@id/tv1" />
 
     <EditText
         android:id="@+id/et1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:maxLines="1"
         android:text="BaseLine约束"
         app:layout_constraintBaseline_toBaselineOf="@id/tv4"
@@ -102,7 +101,7 @@
         app:layout_constraintLeft_toRightOf="@id/tv4"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv4"
-        app:layout_constraintTop_toBottomOf="@id/tv1"/>
+        app:layout_constraintTop_toBottomOf="@id/tv1" />
 
 
     <TextView
@@ -118,7 +117,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/tab2"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tab2"
@@ -132,7 +131,7 @@
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintLeft_toRightOf="@id/tab1"
         app:layout_constraintRight_toLeftOf="@+id/tab3"
-        app:layout_constraintStart_toEndOf="@id/tab1"/>
+        app:layout_constraintStart_toEndOf="@id/tab1" />
 
     <TextView
         android:id="@+id/tab3"
@@ -146,7 +145,7 @@
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintLeft_toRightOf="@id/tab2"
         app:layout_constraintRight_toLeftOf="@+id/tab4"
-        app:layout_constraintStart_toEndOf="@id/tab2"/>
+        app:layout_constraintStart_toEndOf="@id/tab2" />
 
     <TextView
         android:id="@+id/tab4"
@@ -160,7 +159,7 @@
         app:layout_constraintHorizontal_weight="4"
         app:layout_constraintLeft_toRightOf="@id/tab3"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tab3"/>
+        app:layout_constraintStart_toEndOf="@id/tab3" />
 
     <Button
         android:id="@+id/button2"
@@ -174,7 +173,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"/>
+        app:layout_constraintVertical_bias="0.95" />
 
     <!--不支持RTL-->
     <Button
@@ -184,21 +183,23 @@
         android:text="圆形约束"
         app:layout_constraintCircle="@id/button3"
         app:layout_constraintCircleAngle="45"
-        app:layout_constraintCircleRadius="150dp"/>
+        app:layout_constraintCircleRadius="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guildline_w"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.9" />
 
-    <androidx.constraintlayout.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guildline_h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp"/>
+        app:layout_constraintGuide_begin="20dp" />
 
     <Button
         android:id="@+id/button3"
@@ -207,26 +208,27 @@
         android:text="GuildLine约束"
         app:layout_constraintBottom_toTopOf="@id/guildline_w"
         app:layout_constraintLeft_toRightOf="@id/guildline_h"
-        app:layout_constraintStart_toEndOf="@id/guildline_h"/>
+        app:layout_constraintStart_toEndOf="@id/guildline_h" />
 
-    <androidx.constraintlayout.Group
+    <androidx.constraintlayout.widget.Group
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:constraint_referenced_ids="button2,button3"/>
+        app:constraint_referenced_ids="button2,button3" />
 
-    <androidx.constraintlayout.Barrier
+    <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:barrierMargin="10dp"
         app:barrierAllowsGoneWidgets="false"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tv4,et1,button4"/>
+        app:constraint_referenced_ids="tv4,et1,button4" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="barrier约束"
-        app:layout_constraintTop_toBottomOf="@id/barrier"/>
+        app:layout_constraintTop_toBottomOf="@id/barrier" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
