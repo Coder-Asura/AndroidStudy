@@ -90,6 +90,12 @@
             android:text="ViewPager 懒加载fragment"/>
 
         <Button
+            android:id="@+id/btn_multi_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="多个ViewPager展示"/>
+
+        <Button
             android:id="@+id/btn_bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

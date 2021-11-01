@@ -49,6 +49,7 @@
         <activity android:name=".activity.fragtofrag.Fragment2Activity" />
         <activity android:name=".activity.itemtype.ItemTypeActivity" />
         <activity android:name=".activity.viewpager.ViewPagerActivity" />
+        <activity android:name=".activity.viewpager.multi.MultiViewPagerActivity" />
         <activity android:name=".activity.BottomNavActivity" />
         <activity android:name=".activity.LeafLoadingActivity" />
         <activity android:name=".activity.RxJavaActivity" />

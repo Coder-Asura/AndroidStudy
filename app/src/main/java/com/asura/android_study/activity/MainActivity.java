@@ -32,6 +32,7 @@ import com.asura.android_study.activity.fragtofrag.Fragment2Activity;
 import com.asura.android_study.activity.itemtype.ItemTypeActivity;
 import com.asura.android_study.activity.threadpool.threadpool.ThreadPoolActivity;
 import com.asura.android_study.activity.viewpager.ViewPagerActivity;
+import com.asura.android_study.activity.viewpager.multi.MultiViewPagerActivity;
 import com.asura.android_study.adapter.MailAppAdapter;
 import com.asura.android_study.adapter.ScrollerAdapter;
 import com.asura.android_study.receiver.NetWorkReceiver;
@@ -80,6 +81,8 @@ public class MainActivity extends BasePermissionActivity {
     Button mBtnItemType;
     @BindView(R.id.btn_viewpager)
     Button mBtnViewpager;
+    @BindView(R.id.btn_multi_viewpager)
+    Button mBtnMultiViewpager;
     @BindView(R.id.btn_bottom_nav)
     Button mBtnBottomNav;
     @BindView(R.id.btn_custom_data)
@@ -130,7 +133,7 @@ public class MainActivity extends BasePermissionActivity {
     @OnClick({R.id.btn_open_qq, R.id.btn_open_email, R.id.btn_open_email_app, R.id.btn_set_wallpaper,
             R.id.btn_music_bind_service, R.id.btn_messenger_service, R.id.btn_rxJava, R.id.btn_leafAnim,
             R.id.btn_coordinatorLayout, R.id.btn_UCBehaviorActivity, R.id.btn_fragment_activity,
-            R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data,
+            R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_multi_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data,
             R.id.btn_constraintLayout, R.id.btn_constraint_transition, R.id.btn_threadPool1,
             R.id.btn_threadPool2, R.id.btn_event_bus})
     public void onViewClicked(View view) {
@@ -157,12 +160,12 @@ public class MainActivity extends BasePermissionActivity {
             case R.id.btn_rxJava:
                 mHlscrol.scrollTo(mHlscrol.getChildAt(0).getWidth() * 10);
                 startActivity(new Intent(MainActivity.this, RxJavaActivity.class));
-//                finish();
+                //                finish();
                 break;
             case R.id.btn_leafAnim:
                 mHlscrol.scrollTo(mHlscrol.getChildAt(0).getWidth() * 20);
                 startActivity(new Intent(MainActivity.this, LeafLoadingActivity.class));
-//                finish();
+                //                finish();
                 break;
             case R.id.btn_coordinatorLayout:
                 startActivity(new Intent(MainActivity.this, CoordinatorLayoutActivity.class));
@@ -178,6 +181,9 @@ public class MainActivity extends BasePermissionActivity {
                 break;
             case R.id.btn_viewpager:
                 startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+                break;
+            case R.id.btn_multi_viewpager:
+                startActivity(new Intent(MainActivity.this, MultiViewPagerActivity.class));
                 break;
             case R.id.btn_bottom_nav:
                 startActivity(new Intent(MainActivity.this, BottomNavActivity.class));
@@ -245,8 +251,8 @@ public class MainActivity extends BasePermissionActivity {
             intent.setComponent(new ComponentName("com.tencent.mobileqq",
                     "com.tencent.mobileqq.activity.SplashActivity"));
             //打开自带邮箱App
-//            intent.setComponent(new ComponentName("com.android.email",
-//                    "com.android.email.activity.EmailActivity"));
+            //            intent.setComponent(new ComponentName("com.android.email",
+            //                    "com.android.email.activity.EmailActivity"));
             if (!(context instanceof Activity)) {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
@@ -259,7 +265,7 @@ public class MainActivity extends BasePermissionActivity {
 
     public void openMailAppSend() {
         Uri uri = Uri.parse("mailto:");
-//        Uri uri = Uri.parse("http:");//选择浏览器App
+        //        Uri uri = Uri.parse("http:");//选择浏览器App
         Intent intent = new Intent(Intent.ACTION_VIEW, null);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.setData(uri);
@@ -277,12 +283,12 @@ public class MainActivity extends BasePermissionActivity {
         // 调用系统排序 ， 根据name排序
         // 该排序很重要，否则只能显示系统应用，而不能列出第三方应用程序
         Collections.sort(resolveInfos, new ResolveInfo.DisplayNameComparator(pm));
-//        final ArrayList<String> stringArrayList = new ArrayList<>();
+        //        final ArrayList<String> stringArrayList = new ArrayList<>();
         final ArrayList<Intent> intents = new ArrayList<>();
         for (ResolveInfo reInfo : resolveInfos) {
             String pkgName = reInfo.activityInfo.packageName; // 获得应用程序的包名
-//            String appLabel = (String) reInfo.loadLabel(pm); // 获得应用程序的Label
-//            Drawable icon = reInfo.loadIcon(pm); // 获得应用程序图标
+            //            String appLabel = (String) reInfo.loadLabel(pm); // 获得应用程序的Label
+            //            Drawable icon = reInfo.loadIcon(pm); // 获得应用程序图标
             Intent appIntent = pm.getLaunchIntentForPackage(pkgName);
             intents.add(appIntent);
         }
