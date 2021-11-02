@@ -20,7 +20,7 @@ import com.asura.android_study.utils.LightSectionsUtils
 class SlidingCheckLayoutActivity : AppCompatActivity() {
     var binding: ActivitySlidingCheckLayoutBinding? = null
 
-    var count = 2
+    var count = 13
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivitySlidingCheckLayoutBinding>(this, R.layout.activity_sliding_check_layout)
@@ -35,14 +35,11 @@ class SlidingCheckLayoutActivity : AppCompatActivity() {
         binding?.etCount?.let {
             with(it) {
                 setText(count.toString())
-                addTextChangedListener { it ->
-                    count = it.toString().toInt()
-                    LightSectionsUtils.getLightSections(count = count)
-                }
                 imeOptions = EditorInfo.IME_ACTION_DONE
                 setOnEditorActionListener { v, actionId, event ->
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        LightSectionsUtils.getLightSections(count = text.toString().toInt())
+                        count = text.toString().toInt()
+                        LightSectionsUtils.getLightSections(count = count)
                         true
                     } else {
                         false
