@@ -43,6 +43,7 @@ public class SlidingCheckLayout extends FrameLayout {
     private boolean mSlidingEnable = true;
     private boolean mStartingCheck = false;
     private int mIncrease = 0;
+    private boolean needLongPress = true;
     private CheckForLongPress mPendingCheckForLongPress;
     private Handler mHandler;
 
@@ -84,7 +85,17 @@ public class SlidingCheckLayout extends FrameLayout {
 //                Log.i(TAG, "dispatchTouchEvent ACTION_DOWN mStartingCheck:" + mStartingCheck);
                 mInitDownY = mLastY = event.getY();
                 mInitDownX = mLastX = event.getX();
+                if (needLongPress) {
                 checkForLongClick(0, mInitDownX, mInitDownY);
+                } else {
+                    if ((mLastPosition = checkDownPosition(mInitDownX, mInitDownY)) != RecyclerView.NO_POSITION) {
+                        if (mOnSlidingPositionListener != null) {
+                            mOnSlidingPositionListener.onSlidingPosition(mLastPosition);
+                        }
+                        requestDisallowInterceptTouchEvent(true);
+                        mStartingCheck = true;
+                    }
+                }
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -113,6 +124,8 @@ public class SlidingCheckLayout extends FrameLayout {
                     return true;
                 }
                 break;
+            default:
+                break;
         }
         boolean result = super.dispatchTouchEvent(event);
 //        Log.i(TAG, "dispatchTouchEvent super.dispatchTouchEvent result:" + result);
@@ -121,12 +134,12 @@ public class SlidingCheckLayout extends FrameLayout {
 
     private void checkSlidingPosition(float x, float y) {
         View childViewUnder = mTargetRv.findChildViewUnder(x, y);
-        if (mOnSlidingPositionListener == null || childViewUnder == null) return;
+        if (mOnSlidingPositionListener == null || childViewUnder == null) {return;}
 
         int currentPosition = mTargetRv.getChildAdapterPosition(childViewUnder);
 //        Log.w(TAG, "checkSlidingPosition currentPosition:" + currentPosition + ",mLastPosition:" + mLastPosition);
 
-        if (currentPosition == mLastPosition || currentPosition == RecyclerView.NO_POSITION) return;
+        if (currentPosition == mLastPosition || currentPosition == RecyclerView.NO_POSITION) {return;}
 
         if (mLastPosition != RecyclerView.NO_POSITION && Math.abs(currentPosition - mLastPosition) > 1) {
             if (mLastPosition > currentPosition) {
@@ -159,6 +172,10 @@ public class SlidingCheckLayout extends FrameLayout {
         mSlidingEnable = slidingEnable;
     }
 
+    public void setNeedLongPress(boolean needLongPress) {
+        this.needLongPress = needLongPress;
+    }
+
     public void setOnSlidingPositionListener(OnSlidingPositionListener onSlidingPositionListener) {
         mOnSlidingPositionListener = onSlidingPositionListener;
     }
@@ -168,7 +185,9 @@ public class SlidingCheckLayout extends FrameLayout {
     }
 
     private void ensureTarget() {
-        if (mTargetRv != null) return;
+        if (mTargetRv != null) {
+            return;
+        }
         for (int i = 0; i < getChildCount(); i++) {
             View childAt = getChildAt(i);
             if (childAt instanceof RecyclerView) {
@@ -182,16 +201,6 @@ public class SlidingCheckLayout extends FrameLayout {
     private boolean isCanIntercept() {
         return mTargetRv != null && mTargetRv.getAdapter() != null && mTargetRv.getAdapter().getItemCount() != 0;
     }
-
-//    private boolean isLongPressed(long lastDownTime, long thisEventTime,
-//                                  long longPressTime) {
-//        long intervalTime = thisEventTime - lastDownTime;
-//        Log.i(TAG, "isLongPressed intervalTime:" + intervalTime);
-//        if (intervalTime >= longPressTime) {
-//            return true;
-//        }
-//        return false;
-//    }
 
     private void checkForLongClick(int delayOffset, float x, float y) {
         if (mPendingCheckForLongPress == null) {
