@@ -18,7 +18,7 @@ object LightSectionsUtils {
     //    }
 
     private const val MIN_SECTIONS_COUNT = 2
-    private const val MAX_SECTIONS_COUNT = 15
+    private const val MAX_SECTIONS_COUNT = 15000
     private const val SPAN_COUNT = 5
 
 

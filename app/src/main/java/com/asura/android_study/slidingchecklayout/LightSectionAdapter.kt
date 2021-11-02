@@ -50,14 +50,16 @@ class LightSectionAdapter(dataList: MutableList<LightSection>) : RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbstractHolder<LightSection?> {
-        return if (viewType == SectionShape.SHAPE_TURNING_LEFT.ordinal
-            || viewType == SectionShape.SHAPE_TURNING_RIGHT.ordinal
-        ) {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv2, parent, false)
-            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
-        } else {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
-            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
-        }
+//        return if (viewType == SectionShape.SHAPE_TURNING_LEFT.ordinal
+//            || viewType == SectionShape.SHAPE_TURNING_RIGHT.ordinal
+//        ) {
+//            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv2, parent, false)
+//            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
+//        } else {
+//            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
+//            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
+//        }
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
+        return LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
     }
 }

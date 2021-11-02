@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -82,11 +83,11 @@ public class SlidingCheckLayout extends FrameLayout {
         final int action = event.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-//                Log.i(TAG, "dispatchTouchEvent ACTION_DOWN mStartingCheck:" + mStartingCheck);
+                Log.i(TAG, "dispatchTouchEvent ACTION_DOWN mStartingCheck:" + mStartingCheck);
                 mInitDownY = mLastY = event.getY();
                 mInitDownX = mLastX = event.getX();
                 if (needLongPress) {
-                checkForLongClick(0, mInitDownX, mInitDownY);
+                    checkForLongClick(0, mInitDownX, mInitDownY);
                 } else {
                     if ((mLastPosition = checkDownPosition(mInitDownX, mInitDownY)) != RecyclerView.NO_POSITION) {
                         if (mOnSlidingPositionListener != null) {
@@ -99,7 +100,7 @@ public class SlidingCheckLayout extends FrameLayout {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-//                Log.i(TAG, "dispatchTouchEvent ACTION_CANCEL||ACTION_UP mStartingCheck:" + mStartingCheck);
+                Log.i(TAG, "dispatchTouchEvent ACTION_CANCEL||ACTION_UP mStartingCheck:" + mStartingCheck);
                 removeLongPressCallback();
                 mLastPosition = RecyclerView.NO_POSITION;
                 mIncrease = 0;
@@ -109,7 +110,7 @@ public class SlidingCheckLayout extends FrameLayout {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-//                Log.i(TAG, "dispatchTouchEvent ACTION_MOVE mStartingCheck:" + mStartingCheck);
+                Log.i(TAG, "dispatchTouchEvent ACTION_MOVE mStartingCheck:" + mStartingCheck);
                 float y = event.getY();
                 float x = event.getX();
                 final float yInitDiff = y - mInitDownY;
@@ -128,18 +129,22 @@ public class SlidingCheckLayout extends FrameLayout {
                 break;
         }
         boolean result = super.dispatchTouchEvent(event);
-//        Log.i(TAG, "dispatchTouchEvent super.dispatchTouchEvent result:" + result);
+        //        Log.i(TAG, "dispatchTouchEvent super.dispatchTouchEvent result:" + result);
         return result;
     }
 
     private void checkSlidingPosition(float x, float y) {
         View childViewUnder = mTargetRv.findChildViewUnder(x, y);
-        if (mOnSlidingPositionListener == null || childViewUnder == null) {return;}
+        if (mOnSlidingPositionListener == null || childViewUnder == null) {
+            return;
+        }
 
         int currentPosition = mTargetRv.getChildAdapterPosition(childViewUnder);
-//        Log.w(TAG, "checkSlidingPosition currentPosition:" + currentPosition + ",mLastPosition:" + mLastPosition);
+        Log.w(TAG, "checkSlidingPosition currentPosition:" + currentPosition + ",mLastPosition:" + mLastPosition);
 
-        if (currentPosition == mLastPosition || currentPosition == RecyclerView.NO_POSITION) {return;}
+        if (currentPosition == mLastPosition || currentPosition == RecyclerView.NO_POSITION) {
+            return;
+        }
 
         if (mLastPosition != RecyclerView.NO_POSITION && Math.abs(currentPosition - mLastPosition) > 1) {
             if (mLastPosition > currentPosition) {

@@ -74,16 +74,17 @@ class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSli
     }
 
     override fun onSlidingPosition(position: Int) {
+        Log.d("asuralxd", "onSlidingPosition $position")
         val entity = mLightSectionAdapter!!.getEntityByPosition(position)
         entity.check = !entity.check
         mLightSectionAdapter!!.notifyItemChanged(position)
-        Log.d("asuralxd", binding?.rv?.getChildAt(0)?.getWidth().toString() + "," + binding?.rv?.getChildAt(0)?.getHeight())
+        //        Log.d("asuralxd", binding?.rv?.getChildAt(0)?.getWidth().toString() + "," + binding?.rv?.getChildAt(0)?.getHeight())
     }
 
     override fun onSlidingRangePosition(startPosition: Int, endPosition: Int) {
+        Log.d("asuralxd", "onSlidingRangePosition $startPosition,$endPosition")
         for (i in startPosition..endPosition) {
             val entity = mLightSectionAdapter!!.getEntityByPosition(i)
-
             entity.check = !entity.check
         }
         mLightSectionAdapter!!.notifyItemRangeChanged(startPosition, endPosition - startPosition + 1)
