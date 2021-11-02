@@ -159,7 +159,7 @@ object LightSectionsUtils {
                     } else {
                         //中间行，或者尾行占满的情况
                         val shape = if (position == positionStart) {
-                            if (realMore == 0) {
+                            if (lastRow && realMore == 0) {
                                 SectionShape.SHAPE_END_LEFT
                             } else {
                                 SectionShape.SHAPE_TURNING_RIGHT
