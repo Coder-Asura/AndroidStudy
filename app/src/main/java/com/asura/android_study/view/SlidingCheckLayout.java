@@ -38,6 +38,7 @@ public class SlidingCheckLayout extends FrameLayout {
     private float mLastX;
 
     private int mLastPosition = RecyclerView.NO_POSITION;
+    private int mFirstDownPosition = RecyclerView.NO_POSITION;
 
     private static final int sLongPressTime = 500;
 
@@ -83,13 +84,13 @@ public class SlidingCheckLayout extends FrameLayout {
         final int action = event.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                Log.i(TAG, "dispatchTouchEvent ACTION_DOWN mStartingCheck:" + mStartingCheck);
+//                Log.i(TAG, "dispatchTouchEvent ACTION_DOWN mStartingCheck:" + mStartingCheck);
                 mInitDownY = mLastY = event.getY();
                 mInitDownX = mLastX = event.getX();
                 if (needLongPress) {
                     checkForLongClick(0, mInitDownX, mInitDownY);
                 } else {
-                    if ((mLastPosition = checkDownPosition(mInitDownX, mInitDownY)) != RecyclerView.NO_POSITION) {
+                    if ((mFirstDownPosition = mLastPosition = checkDownPosition(mInitDownX, mInitDownY)) != RecyclerView.NO_POSITION) {
                         if (mOnSlidingPositionListener != null) {
                             mOnSlidingPositionListener.onSlidingPosition(mLastPosition);
                         }
@@ -100,7 +101,7 @@ public class SlidingCheckLayout extends FrameLayout {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                Log.i(TAG, "dispatchTouchEvent ACTION_CANCEL||ACTION_UP mStartingCheck:" + mStartingCheck);
+//                Log.i(TAG, "dispatchTouchEvent ACTION_CANCEL||ACTION_UP mStartingCheck:" + mStartingCheck);
                 removeLongPressCallback();
                 mLastPosition = RecyclerView.NO_POSITION;
                 mIncrease = 0;
@@ -110,7 +111,7 @@ public class SlidingCheckLayout extends FrameLayout {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.i(TAG, "dispatchTouchEvent ACTION_MOVE mStartingCheck:" + mStartingCheck);
+//                Log.i(TAG, "dispatchTouchEvent ACTION_MOVE mStartingCheck:" + mStartingCheck);
                 float y = event.getY();
                 float x = event.getX();
                 final float yInitDiff = y - mInitDownY;
@@ -146,19 +147,10 @@ public class SlidingCheckLayout extends FrameLayout {
             return;
         }
 
-        if (mLastPosition != RecyclerView.NO_POSITION && Math.abs(currentPosition - mLastPosition) > 1) {
-            if (mLastPosition > currentPosition) {
-                mOnSlidingPositionListener.onSlidingRangePosition(currentPosition, mIncrease > 0 ? mLastPosition : mLastPosition - 1);
-            } else {
-                mOnSlidingPositionListener.onSlidingRangePosition(mIncrease < 0 ? mLastPosition : mLastPosition + 1, currentPosition);
-            }
-        } else {
-            if ((mIncrease > 0 && mLastPosition > currentPosition) || (mIncrease < 0 && currentPosition > mLastPosition)) {
-                mOnSlidingPositionListener.onSlidingPosition(mLastPosition);
-            }
-            mOnSlidingPositionListener.onSlidingPosition(currentPosition);
+        if (mLastPosition != RecyclerView.NO_POSITION) {
+            mOnSlidingPositionListener.onSlidingRangePosition(mFirstDownPosition, currentPosition);
         }
-        mIncrease = currentPosition > mLastPosition ? 1 : -1;
+
         mLastPosition = currentPosition;
     }
 
@@ -233,7 +225,7 @@ public class SlidingCheckLayout extends FrameLayout {
 
         @Override
         public void run() {
-            if ((mOriginalPressedState == isPressed()) && (mLastPosition = checkDownPosition(mX, mY)) != RecyclerView.NO_POSITION) {
+            if ((mOriginalPressedState == isPressed()) && (mFirstDownPosition = mLastPosition = checkDownPosition(mX, mY)) != RecyclerView.NO_POSITION) {
                 if (mOnSlidingPositionListener != null) {
                     mOnSlidingPositionListener.onSlidingPosition(mLastPosition);
                 }
