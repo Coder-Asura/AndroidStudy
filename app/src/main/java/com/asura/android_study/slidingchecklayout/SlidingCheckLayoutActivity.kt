@@ -20,7 +20,7 @@ import com.asura.android_study.utils.LightSectionsUtils
 class SlidingCheckLayoutActivity : AppCompatActivity() {
     var binding: ActivitySlidingCheckLayoutBinding? = null
 
-    var count = 13
+    var count = 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivitySlidingCheckLayoutBinding>(this, R.layout.activity_sliding_check_layout)

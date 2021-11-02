@@ -68,182 +68,116 @@ object LightSectionsUtils {
         }
         Log.d("asuralxd", "------------------------------------")
         Log.d("asuralxd", "max $max, spanCount:$spanCount, count $count, realRows $realRows, realMore $realMore")
-        if (realRows == 1) {
-            getFirstSpan(list, count, false)
-        } else {
-            //先获取第一行
-            getFirstSpan(list, SPAN_COUNT, true)
-
-
-            //            =========well==================
-            //奇数行位置一致，偶数行位置反序
-            for (row in 1 until realRows) {
-                val lastRow = row == (realRows - 1)
+        //奇数行位置一致，偶数行位置反序
+        for (row in 0 until realRows) {
+            val lastRow = row == (realRows - 1)
+            val needTurning = if (row == 0) {
+                //多行情况下首行都需要换行
+                realRows != 1
+            } else {
                 //不是最后一行，都需要换行
-                val needTurning = !lastRow
+                !lastRow
+            }
 
-                if ((row + 1) % 2 == 1) {
-                    //奇数行
-                    //首行个数 + 除尾行外其他行行数*其他行最大个数
-                    val positionStart = SPAN_COUNT + (row + 1 - 1 - 1) * (SPAN_COUNT - 1)
-                    val positionEnd = if (lastRow && realMore != 0) {
+            if ((row + 1) % 2 == 1) {
+                //奇数行
+                val positionStart = if (row == 0) {
+                    //首行
+                    0
+                } else {
+                    //其他行：首行个数 + 除尾行外其他行行数*其他行最大个数
+                    SPAN_COUNT + (row + 1 - 1 - 1) * (SPAN_COUNT - 1)
+                }
+                val positionEnd = if (row == 0) {
+                    //首行
+                    if (lastRow) {
+                        positionStart + count - 1
+                    } else {
+                        positionStart + SPAN_COUNT - 1
+                    }
+                } else {
+                    if (lastRow && realMore != 0) {
                         //最后一行，且没有占满的情况
                         positionStart + realMore - 1
                     } else {
                         //占满了整行
                         positionStart + (SPAN_COUNT - 1) - 1
                     }
-
-                    val indexStart = positionStart
-                    val indexEnd = positionEnd
-                    Log.d(
-                        "asuralxd",
-                        "count $count, 奇数 row $row, index:$indexStart -> $indexEnd ,needTurning $needTurning , position:$positionStart->$positionEnd"
-                    )
-
-                    for (position in positionStart..positionEnd) {
-                        val shape = when (position) {
-                            positionEnd -> if (needTurning) {
-                                SectionShape.SHAPE_TURNING_LEFT
-                            } else {
-                                SectionShape.SHAPE_END_RIGHT
-                            }
-                            else -> SectionShape.SHAPE_NORMAL
-                        }
-                        val lightSection = LightSection(position, position, shape, false, "$position,$position,$position")
-                        list.add(lightSection)
-                    }
-                    //                    Log.d("asuralxd", "奇数 \n $list")
-                } else {
-                    val positionStart = SPAN_COUNT + (row - 1) * (SPAN_COUNT - 1)
-                    val positionEnd = positionStart + (SPAN_COUNT - 1) - 1
-                    //偶数行
-                    val indexStart = if (lastRow) {
-                        if (realMore == 0) {
-                            positionEnd
-                        } else {
-                            positionEnd - realMore
-                        }
-                    } else {
-                        positionEnd
-                    }
-                    val indexEnd = if (lastRow) {
-                        if (realMore == 0) {
-                            positionEnd - realMore
-                        } else {
-                            positionStart
-                        }
-                    } else {
-                        positionStart
-                    }
-                    Log.d(
-                        "asuralxd",
-                        "count $count, 偶数 row $row, index:$indexStart -> $indexEnd ,needTurning $needTurning , position:$positionStart->$positionEnd"
-                    )
-
-                    for (position in positionStart..positionEnd) {
-                        val shape = when (position) {
-                            positionStart -> {
-                                if (realMore == 0) {
-                                    //占满了
-                                    SectionShape.SHAPE_END_LEFT
-                                } else {
-                                    SectionShape.SHAPE_EMPTY
-                                }
-                            }
-                            positionEnd -> {
-                                SectionShape.SHAPE_NORMAL
-                            }
-                            else -> {
-                                SectionShape.SHAPE_NORMAL
-                            }
-                            //                            indexEnd -> if (needTurning) {
-                            //                                SectionShape.SHAPE_TURNING_LEFT
-                            //                            } else {
-                            //                                SectionShape.SHAPE_END_RIGHT
-                            //                            }
-                            //                            else -> SectionShape.SHAPE_NORMAL
-                        }
-                        //                        val lightSection = LightSection(position, index, shape, false, "$index,$index,$index")
-                        //                        list.add(lightSection)
-                    }
-                    //                    Log.d("asuralxd", "偶数 \n $list")
                 }
-            }
 
+                val indexStart = positionStart
+                val indexEnd = positionEnd
+                Log.d(
+                    "asuralxd",
+                    "count $count, 奇数 row $row, index:$indexStart -> $indexEnd ,needTurning $needTurning , position:$positionStart->$positionEnd"
+                )
+                for (position in positionStart..positionEnd) {
+                    val shape = when (position) {
+                        0 -> SectionShape.SHAPE_START
+                        positionEnd -> if (needTurning) {
+                            SectionShape.SHAPE_TURNING_LEFT
+                        } else {
+                            SectionShape.SHAPE_END_RIGHT
+                        }
+                        else -> SectionShape.SHAPE_NORMAL
+                    }
+                    val lightSection = LightSection(position, position, shape, false, "$position,$position,$position")
+                    list.add(lightSection)
+                }
+//                Log.d("asuralxd", "奇数 \n $list")
+            } else {
+                //偶数行反序，需要占位空格
+                val positionStart = SPAN_COUNT + (row - 1) * (SPAN_COUNT - 1)
+                val positionEnd = positionStart + (SPAN_COUNT - 1) - 1
+                //偶数行
+                val indexStart = if (lastRow && realMore != 0) {
+                    positionEnd - (SPAN_COUNT - 1 - realMore)
+                } else {
+                    positionEnd
+                }
+                val indexEnd = positionStart
+
+                Log.d(
+                    "asuralxd",
+                    "count $count, 偶数 row $row, index:$indexStart -> $indexEnd ,needTurning $needTurning , position:$positionStart->$positionEnd"
+                )
+
+                for (position in positionStart..positionEnd) {
+                    val shape = when (position) {
+                        positionStart -> {
+                            if (realMore == 0) {
+                                //占满了
+                                SectionShape.SHAPE_END_LEFT
+                            } else {
+                                SectionShape.SHAPE_EMPTY
+                            }
+                        }
+                        positionEnd -> {
+                            SectionShape.SHAPE_NORMAL
+                        }
+                        else -> {
+                            SectionShape.SHAPE_NORMAL
+                        }
+                        //                            indexEnd -> if (needTurning) {
+                        //                                SectionShape.SHAPE_TURNING_LEFT
+                        //                            } else {
+                        //                                SectionShape.SHAPE_END_RIGHT
+                        //                            }
+                        //                            else -> SectionShape.SHAPE_NORMAL
+                    }
+                    //                        val lightSection = LightSection(position, index, shape, false, "$index,$index,$index")
+                    //                        list.add(lightSection)
+                }
+                //                    Log.d("asuralxd", "偶数 \n $list")
+            }
         }
+
+        //        }
 
 
         //        Log.d("asuralxd", "getLightSections \n $list")
         return list
     }
-
-    private fun getFirstSpan(list: MutableList<LightSection>, count: Int, needTurning: Boolean) {
-        val indexStart = 0
-        val indexEnd = indexStart + count - 1
-        Log.d("asuralxd", "row 0, index:$indexStart -> $indexEnd ,needTurning $needTurning , position:$indexStart->$indexEnd")
-        for (index: Int in indexStart..indexEnd) {
-            val shape = when (index) {
-                indexStart -> SectionShape.SHAPE_START
-                indexEnd -> if (needTurning) {
-                    SectionShape.SHAPE_TURNING_LEFT
-                } else {
-                    SectionShape.SHAPE_END_RIGHT
-                }
-                else -> SectionShape.SHAPE_NORMAL
-            }
-            val lightSection = LightSection(index, index, shape, false, "$index,$index,$index")
-            list.add(lightSection)
-        }
-        //        Log.d("asuralxd", "first \n $list")
-    }
-
-    //    private fun getLastSpan(list: MutableList<LightSection>, realRows: Int, realMore: Int) {
-    //        //奇数行表示最后一个在右边，偶数行反之
-    //        val lastIsRight: Boolean = realRows % 2 == 1
-    //        //最后一行的最后一个是在右边
-    //        if (lastIsRight) {
-    //            //val start = if (rows >= 2) (rows - 1) * SPAN_COUNT else SPAN_COUNT
-    //            //说明最少有3行
-    //            //尾行起始位置 = 首行个数+中间行个数-1
-    //            val start = SPAN_COUNT + (realRows - 2) * (SPAN_COUNT - 1)
-    //            //realMore=0 表示尾行满了
-    //            val end = if (realMore == 0) {
-    //                start + (SPAN_COUNT - 1) - 1
-    //            } else {
-    //                start + realMore - 1
-    //            }
-    //            //不需要补充空格
-    //            for (index: Int in start..end) {
-    //                val shape = when (index) {
-    //                    end -> SectionShape.SHAPE_END_RIGHT
-    //                    else -> SectionShape.SHAPE_NORMAL
-    //                }
-    //                val lightSection = LightSection(index, shape, false, "$index,$index,$index")
-    //                list.add(lightSection)
-    //            }
-    //        } else {
-    //            //偶数行，结束位置在左边，需要在左边补充空格,需要倒序
-    //            //尾行起始位置 = 首行个数+中间行个数
-    //            val start = SPAN_COUNT + (realRows - 2) * (SPAN_COUNT - 1)
-    //            val end = start + (SPAN_COUNT - 1) - 1
-    //            val realStart = if (realMore == 0) {
-    //                start
-    //            } else {
-    //                start + ((SPAN_COUNT - 1) - realMore + 1)
-    //            }
-    //            for (index: Int in end..start) {
-    //                val shape = when (index) {
-    //                    realStart -> SectionShape.SHAPE_END_LEFT
-    //                    in start until realStart -> SectionShape.SHAPE_EMPTY
-    //                    else -> SectionShape.SHAPE_NORMAL
-    //                }
-    //                val lightSection = LightSection(index, shape, false, "$index,$index,$index")
-    //                list.add(lightSection)
-    //            }
-    //        }
-    //    }
-
 
     private fun exchangeIndex(position: Int, count: Int, max: Int = MAX_SECTIONS_COUNT, spanCount: Int = SPAN_COUNT): Int {
         val rows = count / spanCount
