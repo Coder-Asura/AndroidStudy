@@ -69,8 +69,8 @@ class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSli
     private var mLightSectionAdapter: LightSectionAdapter? = null
 
 
-    private fun createData(): List<LightSection>? {
-        return LightSectionsUtils.getLightSections(count = count)
+    private fun createData(): MutableList<LightSection> {
+        return LightSectionsUtils.getLightSections(count = count) ?: mutableListOf()
     }
 
     override fun onSlidingPosition(position: Int) {
@@ -83,6 +83,7 @@ class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSli
     override fun onSlidingRangePosition(startPosition: Int, endPosition: Int) {
         for (i in startPosition..endPosition) {
             val entity = mLightSectionAdapter!!.getEntityByPosition(i)
+
             entity.check = !entity.check
         }
         mLightSectionAdapter!!.notifyItemRangeChanged(startPosition, endPosition - startPosition + 1)
