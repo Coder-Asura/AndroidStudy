@@ -49,7 +49,7 @@ class LightSectionAdapter(dataList: MutableList<LightSection>) : RecyclerView.Ad
         holder.onBind(lightSection)
         holder.itemView.setOnClickListener {
             lightSection.check = !lightSection.check
-            lightSection.byClick = true
+//            lightSection.byClick = lightSection.check
             notifyItemChanged(holder.adapterPosition)
         }
     }
