@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.util.rangeTo
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.asura.android_study.R
@@ -11,7 +12,6 @@ import com.asura.android_study.databinding.ActivitySlidingCheckLayoutBinding
 import com.asura.android_study.model.LightSection
 import com.asura.android_study.utils.LightSectionsUtils
 import com.asura.android_study.view.SlidingCheckLayout
-import java.util.ArrayList
 
 /**
  * Author: Asuraliu
@@ -24,7 +24,7 @@ import java.util.ArrayList
 class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSlidingPositionListener {
     var binding: ActivitySlidingCheckLayoutBinding? = null
 
-    var count = 2
+    var count = 29
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivitySlidingCheckLayoutBinding>(this, R.layout.activity_sliding_check_layout)
@@ -73,20 +73,37 @@ class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSli
         return LightSectionsUtils.getLightSections(count = count) ?: mutableListOf()
     }
 
-    override fun onSlidingPosition(position: Int) {
-        Log.d("asuralxd", "onSlidingPosition $position")
+    override fun onSlidingStart(position: Int) {
+        Log.d("asuralxd", "onSlidingStart $position")
         val entity = mLightSectionAdapter!!.getEntityByPosition(position)
-        entity.check = !entity.check
-        mLightSectionAdapter!!.notifyItemChanged(position)
+        if (entity.index != -1) {
+            entity.check = !entity.check
+            mLightSectionAdapter!!.notifyItemChanged(position)
+        }
         //        Log.d("asuralxd", binding?.rv?.getChildAt(0)?.getWidth().toString() + "," + binding?.rv?.getChildAt(0)?.getHeight())
     }
 
     override fun onSlidingRangePosition(startPosition: Int, endPosition: Int) {
-        Log.d("asuralxd", "onSlidingRangePosition $startPosition,$endPosition")
-        for (i in startPosition..endPosition) {
-            val entity = mLightSectionAdapter!!.getEntityByPosition(i)
-            entity.check = !entity.check
+        val startIndex = mLightSectionAdapter!!.getDataList()[startPosition].index
+        val endIndex = mLightSectionAdapter!!.getDataList()[endPosition].index
+        Log.d("asuralxd", "onSlidingRangePosition $startPosition,$endPosition,$startIndex,$endIndex ")
+        if (startIndex != -1 && endIndex != -1) {
+            mLightSectionAdapter!!.getDataList().forEach {
+                if (it.index != -1) {
+                    if (startIndex < endIndex) {
+                        it.check = it.index in startIndex..endIndex
+                    } else {
+                        it.check = it.index in endIndex..startIndex
+                    }
+                }
+            }
+            mLightSectionAdapter!!.notifyDataSetChanged()
         }
-        mLightSectionAdapter!!.notifyItemRangeChanged(startPosition, endPosition - startPosition + 1)
+
+    }
+
+    override fun onSlidingEnd(endPosition: Int) {
+        Log.d("asuralxd", "onSlidingEnd $endPosition")
+
     }
 }

@@ -15,7 +15,8 @@ data class LightSection(
     var index: Int = 0,
     var shape: SectionShape = SectionShape.SHAPE_START,
     var check: Boolean = false,
-    var hsv: String = ""
+    var hsv: String = "",
+    var byClick: Boolean = false
 ) {
     override fun toString(): String {
         //        return "$index,$shape,$check,$hsv\n"

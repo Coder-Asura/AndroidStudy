@@ -20,6 +20,10 @@ class LightSectionAdapter(dataList: MutableList<LightSection>) : RecyclerView.Ad
         return mDataList[position].index
     }
 
+    fun getDataList(): MutableList<LightSection> {
+        return mDataList
+    }
+
     fun setmDataList(mDataList: List<LightSection>?) {
         if (mDataList != null) {
             this.mDataList.clear()
@@ -45,21 +49,22 @@ class LightSectionAdapter(dataList: MutableList<LightSection>) : RecyclerView.Ad
         holder.onBind(lightSection)
         holder.itemView.setOnClickListener {
             lightSection.check = !lightSection.check
+            lightSection.byClick = true
             notifyItemChanged(holder.adapterPosition)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbstractHolder<LightSection?> {
-//        return if (viewType == SectionShape.SHAPE_TURNING_LEFT.ordinal
-//            || viewType == SectionShape.SHAPE_TURNING_RIGHT.ordinal
-//        ) {
-//            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv2, parent, false)
-//            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
-//        } else {
-//            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
-//            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
-//        }
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
-        return LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
+        return if (viewType == SectionShape.SHAPE_TURNING_LEFT.ordinal
+            || viewType == SectionShape.SHAPE_TURNING_RIGHT.ordinal
+        ) {
+            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv2, parent, false)
+            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
+        } else {
+            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
+            LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
+        }
+//        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_rv, parent, false)
+//        return LightSectionStartViewHolder(itemView) as AbstractHolder<LightSection?>
     }
 }
