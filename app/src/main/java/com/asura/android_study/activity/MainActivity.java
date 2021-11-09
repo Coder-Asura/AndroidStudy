@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -41,6 +42,12 @@ import com.asura.android_study.service.music.MusicActivity;
 import com.asura.android_study.utils.FontHelper;
 import com.asura.android_study.view.CameraLiveWallpaper;
 import com.asura.android_study.view.HorizontalListView;
+import com.asura.android_study.view.slide.EmptyView;
+import com.asura.android_study.view.slide.LeftView;
+import com.asura.android_study.view.slide.NormalView;
+import com.asura.android_study.view.slide.RightView;
+import com.asura.android_study.view.slide.TurnLeftView;
+import com.asura.android_study.view.slide.TurnRightView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -139,7 +146,52 @@ public class MainActivity extends BasePermissionActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_open_qq:
-                openQQ(MainActivity.this);
+                LeftView view1 = findViewById(R.id.ddddd);
+                TurnLeftView view2 = findViewById(R.id.ddddd2);
+                TurnRightView view3 = findViewById(R.id.ddddd3);
+                RightView view4 = findViewById(R.id.ddddd4);
+                NormalView view5 = findViewById(R.id.ddddd5);
+                EmptyView view6 = findViewById(R.id.ddddd6);
+                view1.setPaintColor(Color.BLACK);
+                view1.setViewChecked(true);
+                view2.setPaintColor(Color.BLACK);
+                view2.setViewChecked(true);
+                view3.setPaintColor(Color.BLACK);
+                view3.setViewChecked(true);
+                view4.setPaintColor(Color.BLACK);
+                view4.setViewChecked(true);
+                view5.setPaintColor(Color.BLACK);
+                view5.setViewChecked(true);
+                view5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, "view5view5view5view5", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                view6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, "view6view6view6view6view6", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                //                openQQ(MainActivity.this);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"openQQopenQQopenQQopenQQ",Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case R.id.btn_open_email:
                 openMailAppSend();
