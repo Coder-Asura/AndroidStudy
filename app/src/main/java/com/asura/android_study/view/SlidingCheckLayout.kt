@@ -1,19 +1,16 @@
-package com.asura.android_study.view;
+package com.asura.android_study.view
 
-import android.content.Context;
-import android.os.Handler;
-
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewConfiguration;
-import android.widget.FrameLayout;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Context
+import android.os.Handler
+import android.os.Looper
+import android.util.AttributeSet
+import android.util.Log
+import kotlin.jvm.JvmOverloads
+import android.widget.FrameLayout
+import androidx.recyclerview.widget.RecyclerView
+import android.view.MotionEvent
+import android.view.ViewConfiguration
+import java.lang.IllegalStateException
 
 /**
  * Author: Asuraliu
@@ -22,236 +19,225 @@ import androidx.recyclerview.widget.RecyclerView;
  * History:
  * <author> <time> <version> <desc>
  * Asuraliu 2021/11/1 1.0 首次创建
- */
-public class SlidingCheckLayout extends FrameLayout {
-    private static final String TAG = SlidingCheckLayout.class.getSimpleName();
-    private int mTouchSlop;
+</desc></version></time></author> */
+class SlidingCheckLayout @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
-    private RecyclerView mTargetRv;
-
-    private float mInitDownY;
-
-    private float mInitDownX;
-
-    private float mLastY;
-
-    private float mLastX;
-
-    private int mLastPosition = RecyclerView.NO_POSITION;
-    private int mFirstDownPosition = RecyclerView.NO_POSITION;
-
-    private static final int sLongPressTime = 500;
-
-    private boolean mSlidingEnable = true;
-    private boolean mStartingCheck = false;
-    private int mIncrease = 0;
-    private boolean needLongPress = true;
-    private CheckForLongPress mPendingCheckForLongPress;
-    private Handler mHandler;
-
-    private OnSlidingPositionListener mOnSlidingPositionListener;
-
-
-    public SlidingCheckLayout(@NonNull Context context) {
-        this(context, null);
-    }
-
-    public SlidingCheckLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public SlidingCheckLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        final ViewConfiguration vc = ViewConfiguration.get(context);
-        mTouchSlop = vc.getScaledTouchSlop();
-        mHandler = new Handler();
-    }
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        ensureTarget();
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (!isSlidingEnable() || !isEnabled()) {
-            return super.dispatchTouchEvent(event);
-        }
-        if (!isCanIntercept()) {
-            return super.dispatchTouchEvent(event);
-        }
-        final int action = event.getActionMasked();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                //                Log.i(TAG, "dispatchTouchEvent ACTION_DOWN mStartingCheck:" + mStartingCheck);
-                mInitDownY = mLastY = event.getY();
-                mInitDownX = mLastX = event.getX();
-                if (needLongPress) {
-                    checkForLongClick(0, mInitDownX, mInitDownY);
-                } else {
-                    if ((mFirstDownPosition = mLastPosition = checkDownPosition(mInitDownX, mInitDownY)) != RecyclerView.NO_POSITION) {
-                        if (mOnSlidingPositionListener != null) {
-                            mOnSlidingPositionListener.onSlidingStart(mLastPosition);
-                        }
-                        requestDisallowInterceptTouchEvent(true);
-                        mStartingCheck = true;
-                    }
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                //                Log.i(TAG, "dispatchTouchEvent ACTION_CANCEL||ACTION_UP mStartingCheck:" + mStartingCheck);
-                if (mOnSlidingPositionListener != null) {
-                    mOnSlidingPositionListener.onSlidingEnd(mLastPosition);
-                }
-                removeLongPressCallback();
-                mLastPosition = RecyclerView.NO_POSITION;
-                mIncrease = 0;
-                if (mStartingCheck) {
-                    mStartingCheck = false;
-                    return true;
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-                //                Log.i(TAG, "dispatchTouchEvent ACTION_MOVE mStartingCheck:" + mStartingCheck);
-                float y = event.getY();
-                float x = event.getX();
-                final float yInitDiff = y - mInitDownY;
-                final float xInitDiff = x - mInitDownX;
-                mLastY = y;
-                mLastX = x;
-                if (!mStartingCheck && (Math.abs(yInitDiff) > mTouchSlop || Math.abs(xInitDiff) > mTouchSlop)) {
-                    removeLongPressCallback();
-                }
-                if (mStartingCheck) {
-                    checkSlidingPosition(x, y);
-                    return true;
-                }
-                break;
-            default:
-                break;
-        }
-        boolean result = super.dispatchTouchEvent(event);
-        //        Log.i(TAG, "dispatchTouchEvent super.dispatchTouchEvent result:" + result);
-        return result;
-    }
-
-    private void checkSlidingPosition(float x, float y) {
-        View childViewUnder = mTargetRv.findChildViewUnder(x, y);
-        if (mOnSlidingPositionListener == null || childViewUnder == null) {
-            return;
-        }
-
-        int currentPosition = mTargetRv.getChildAdapterPosition(childViewUnder);
-        Log.w(TAG, "checkSlidingPosition currentPosition:" + currentPosition + ",mLastPosition:" + mLastPosition);
-
-        if (currentPosition == mLastPosition || currentPosition == RecyclerView.NO_POSITION) {
-            return;
-        }
-
-        if (mLastPosition != RecyclerView.NO_POSITION) {
-            mOnSlidingPositionListener.onSlidingRangePosition(mFirstDownPosition, currentPosition);
-        }
-
-        mLastPosition = currentPosition;
-    }
-
-    private int checkDownPosition(float x, float y) {
-        View childViewUnder = mTargetRv.findChildViewUnder(x, y);
-        if (mOnSlidingPositionListener == null || childViewUnder == null)
-            return RecyclerView.NO_POSITION;
-
-        int currentPosition = mTargetRv.getChildAdapterPosition(childViewUnder);
-        if (currentPosition == RecyclerView.NO_POSITION) return RecyclerView.NO_POSITION;
-
-        return currentPosition;
-    }
-
-    public void setSlidingEnable(boolean slidingEnable) {
-        mSlidingEnable = slidingEnable;
-    }
-
-    public void setNeedLongPress(boolean needLongPress) {
-        this.needLongPress = needLongPress;
-    }
-
-    public void setOnSlidingPositionListener(OnSlidingPositionListener onSlidingPositionListener) {
-        mOnSlidingPositionListener = onSlidingPositionListener;
-    }
-
-    public boolean isSlidingEnable() {
-        return mSlidingEnable;
-    }
-
-    private void ensureTarget() {
-        if (mTargetRv != null) {
-            return;
-        }
-        for (int i = 0; i < getChildCount(); i++) {
-            View childAt = getChildAt(i);
-            if (childAt instanceof RecyclerView) {
-                mTargetRv = (RecyclerView) childAt;
-                return;
-            }
-        }
-        throw new IllegalStateException("Children must have a RecyclerView");
-    }
-
-    private boolean isCanIntercept() {
-        return mTargetRv != null && mTargetRv.getAdapter() != null && mTargetRv.getAdapter().getItemCount() != 0;
-    }
-
-    private void checkForLongClick(int delayOffset, float x, float y) {
-        if (mPendingCheckForLongPress == null) {
-            mPendingCheckForLongPress = new CheckForLongPress();
-        }
-        mPendingCheckForLongPress.setAnchor(x, y);
-        mPendingCheckForLongPress.rememberPressedState();
-        mHandler.postDelayed(mPendingCheckForLongPress,
-                sLongPressTime - delayOffset);
-    }
+    private val mTouchSlop: Int
+    private var mTargetRv: RecyclerView? = null
+    private var mInitDownY = 0f
+    private var mInitDownX = 0f
+    private var mLastY = 0f
+    private var mLastX = 0f
+    private var mLastPosition = RecyclerView.NO_POSITION
+    private var mFirstDownPosition = RecyclerView.NO_POSITION
+    private var mStartingCheck = false
+    private var mIncrease = 0
+    private var mPendingCheckForLongPress: CheckForLongPress? = null
+    private val mHandler: Handler
+    private var mOnSlidingPositionListener: OnSlidingPositionListener? = null
 
     /**
-     * Remove the longpress detection timer.
+     * 是否可滑动
      */
-    private void removeLongPressCallback() {
+    var isSlidingEnable = true
+
+    /**
+     * 是否需要长按触发滑动
+     */
+    var needLongPress: Boolean = false
+
+    companion object {
+        private val TAG = SlidingCheckLayout::class.java.simpleName
+        private const val LONG_PRESS_TIME = 500
+    }
+
+    init {
+        val vc = ViewConfiguration.get(context)
+        mTouchSlop = vc.scaledTouchSlop
+        mHandler = Handler(Looper.getMainLooper())
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        ensureTarget()
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (!isSlidingEnable || !isEnabled) {
+            return super.dispatchTouchEvent(event)
+        }
+        if (!isCanIntercept) {
+            return super.dispatchTouchEvent(event)
+        }
+        val action = event.actionMasked
+        when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                mLastY = event.y
+                mInitDownY = mLastY
+                mLastX = event.x
+                mInitDownX = mLastX
+
+                if (needLongPress) {
+                    checkForLongClick(0, mInitDownX, mInitDownY)
+                } else {
+                    if (checkDownPosition(mInitDownX, mInitDownY).also {
+                            mLastPosition = it
+                            mFirstDownPosition = it
+                        } != RecyclerView.NO_POSITION) {
+                        if (mOnSlidingPositionListener != null) {
+                            mOnSlidingPositionListener!!.onSlidingStart(mLastPosition)
+                        }
+                        requestDisallowInterceptTouchEvent(true)
+                        mStartingCheck = true
+                    }
+                }
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                //                Log.i(TAG, "dispatchTouchEvent ACTION_CANCEL||ACTION_UP mStartingCheck:" + mStartingCheck);
+                if (mOnSlidingPositionListener != null) {
+                    mOnSlidingPositionListener!!.onSlidingEnd(mLastPosition)
+                }
+                removeLongPressCallback()
+                mLastPosition = RecyclerView.NO_POSITION
+                mIncrease = 0
+                if (mStartingCheck) {
+                    mStartingCheck = false
+                    return true
+                }
+            }
+            MotionEvent.ACTION_MOVE -> {
+                //                Log.i(TAG, "dispatchTouchEvent ACTION_MOVE mStartingCheck:" + mStartingCheck);
+                val y = event.y
+                val x = event.x
+                val yInitDiff = y - mInitDownY
+                val xInitDiff = x - mInitDownX
+                mLastY = y
+                mLastX = x
+                if (!mStartingCheck && (Math.abs(yInitDiff) > mTouchSlop || Math.abs(xInitDiff) > mTouchSlop)) {
+                    removeLongPressCallback()
+                }
+                if (mStartingCheck) {
+                    checkSlidingPosition(x, y)
+                    return true
+                }
+            }
+            else -> {
+            }
+        }
+        val result = super.dispatchTouchEvent(event)
+        //        Log.i(TAG, "dispatchTouchEvent super.dispatchTouchEvent result:" + result);
+        return result
+    }
+
+    private fun checkSlidingPosition(x: Float, y: Float) {
+        val childViewUnder = mTargetRv!!.findChildViewUnder(x, y)
+        if (mOnSlidingPositionListener == null || childViewUnder == null) {
+            return
+        }
+        val currentPosition = mTargetRv!!.getChildAdapterPosition(childViewUnder)
+        //        Log.w(TAG, "checkSlidingPosition currentPosition:$currentPosition,mLastPosition:$mLastPosition")
+        if (currentPosition == mLastPosition || currentPosition == RecyclerView.NO_POSITION) {
+            return
+        }
+        if (mLastPosition != RecyclerView.NO_POSITION) {
+            mOnSlidingPositionListener!!.onSlidingRangePosition(mFirstDownPosition, currentPosition)
+        }
+        mLastPosition = currentPosition
+    }
+
+    private fun checkDownPosition(x: Float, y: Float): Int {
+        val childViewUnder = mTargetRv!!.findChildViewUnder(x, y)
+        if (mOnSlidingPositionListener == null || childViewUnder == null) return RecyclerView.NO_POSITION
+        val currentPosition = mTargetRv!!.getChildAdapterPosition(childViewUnder)
+        return if (currentPosition == RecyclerView.NO_POSITION) RecyclerView.NO_POSITION else currentPosition
+    }
+
+    fun setOnSlidingPositionListener(onSlidingPositionListener: OnSlidingPositionListener?) {
+        mOnSlidingPositionListener = onSlidingPositionListener
+    }
+
+    private fun ensureTarget() {
+        if (mTargetRv != null) {
+            return
+        }
+        for (i in 0 until childCount) {
+            val childAt = getChildAt(i)
+            if (childAt is RecyclerView) {
+                mTargetRv = childAt
+                return
+            }
+        }
+        throw IllegalStateException("Children must have a RecyclerView")
+    }
+
+    private val isCanIntercept: Boolean
+        get() = mTargetRv != null && mTargetRv!!.adapter != null && mTargetRv!!.adapter!!.itemCount != 0
+
+    private fun checkForLongClick(delayOffset: Int, x: Float, y: Float) {
+        if (mPendingCheckForLongPress == null) {
+            mPendingCheckForLongPress = CheckForLongPress()
+        }
+        mPendingCheckForLongPress!!.setAnchor(x, y)
+        mPendingCheckForLongPress!!.rememberPressedState()
+        mHandler.postDelayed(
+            mPendingCheckForLongPress!!, (
+                    LONG_PRESS_TIME - delayOffset).toLong()
+        )
+    }
+
+    private fun removeLongPressCallback() {
         if (mPendingCheckForLongPress != null) {
-            mHandler.removeCallbacks(mPendingCheckForLongPress);
+            mHandler.removeCallbacks(mPendingCheckForLongPress!!)
         }
     }
 
-    private final class CheckForLongPress implements Runnable {
-        private float mX;
-        private float mY;
-        private boolean mOriginalPressedState;
-
-        @Override
-        public void run() {
-            if ((mOriginalPressedState == isPressed()) && (mFirstDownPosition = mLastPosition = checkDownPosition(mX, mY)) != RecyclerView.NO_POSITION) {
+    private inner class CheckForLongPress : Runnable {
+        private var mX = 0f
+        private var mY = 0f
+        private var mOriginalPressedState = false
+        override fun run() {
+            if (mOriginalPressedState == isPressed && checkDownPosition(mX, mY).also { mLastPosition = it }
+                    .also { mFirstDownPosition = it } != RecyclerView.NO_POSITION) {
                 if (mOnSlidingPositionListener != null) {
-                    mOnSlidingPositionListener.onSlidingStart(mLastPosition);
+                    mOnSlidingPositionListener!!.onSlidingStart(mLastPosition)
                 }
-                requestDisallowInterceptTouchEvent(true);
-                mStartingCheck = true;
+                requestDisallowInterceptTouchEvent(true)
+                mStartingCheck = true
             }
         }
 
-        public void setAnchor(float x, float y) {
-            mX = x;
-            mY = y;
+        fun setAnchor(x: Float, y: Float) {
+            mX = x
+            mY = y
         }
 
-        public void rememberPressedState() {
-            mOriginalPressedState = isPressed();
+        fun rememberPressedState() {
+            mOriginalPressedState = isPressed
         }
     }
 
-    public interface OnSlidingPositionListener {
-        void onSlidingStart(int position);
+    interface OnSlidingPositionListener {
+        /**
+         * 开始滑动
+         * @param position 手指触摸位置
+         */
+        fun onSlidingStart(position: Int)
 
-        void onSlidingRangePosition(int startPosition, int endPosition);
+        /**
+         * 区间滑动
+         * @param startPosition 起始位置
+         * @param endPosition 结束位置
+         */
+        fun onSlidingRangePosition(startPosition: Int, endPosition: Int)
 
-        void onSlidingEnd(int endPosition);
+        /**
+         * 滑动结束
+         * @param endPosition 手指抬起位置
+         */
+        fun onSlidingEnd(endPosition: Int)
     }
 }

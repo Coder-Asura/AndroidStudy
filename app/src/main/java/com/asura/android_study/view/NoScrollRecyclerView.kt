@@ -1,12 +1,9 @@
-package com.asura.android_study.view;
+package com.asura.android_study.view
 
-import android.content.Context;
-
-import android.util.AttributeSet;
-import android.view.MotionEvent;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+import android.content.Context
+import android.util.AttributeSet
+import androidx.recyclerview.widget.RecyclerView
+import android.view.MotionEvent
 
 /**
  * Author: Asuraliu
@@ -15,27 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
  * History:
  * <author> <time> <version> <desc>
  * Asuraliu 2021/11/1 1.0 首次创建
- */
-public class NoScrollRecyclerView extends RecyclerView {
-    public NoScrollRecyclerView(Context context) {
-        super(context);
+</desc></version></time></author> */
+class NoScrollRecyclerView : RecyclerView {
+    constructor(context: Context?) : super(context!!) {}
+    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {}
+    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(context!!, attrs, defStyle) {}
+
+    override fun onInterceptTouchEvent(e: MotionEvent): Boolean {
+        return false
     }
 
-    public NoScrollRecyclerView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public NoScrollRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent e) {
-        return false;
+    override fun onTouchEvent(e: MotionEvent): Boolean {
+        return false
     }
 }

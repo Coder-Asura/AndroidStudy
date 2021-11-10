@@ -53,7 +53,7 @@ class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSli
         }
 
         binding?.scl?.setOnSlidingPositionListener(this)
-        binding?.scl?.setNeedLongPress(false)
+        binding?.scl?.needLongPress=false
         staggeredGridLayoutManager = StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
         mLightSectionAdapter = LightSectionAdapter(createData())
         binding?.rv?.layoutManager = staggeredGridLayoutManager
