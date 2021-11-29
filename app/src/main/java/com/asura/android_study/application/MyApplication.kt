@@ -13,7 +13,7 @@ import com.asura.android_study.BuildConfig
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        ALog.initLog(BuildConfig.LOG_ENABLE, "Asura")
+        ALog.initLog(BuildConfig.LOG_ENABLE, "AsuraLxd")
     }
 
     override fun attachBaseContext(base: Context?) {
