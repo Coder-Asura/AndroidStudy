@@ -29,6 +29,7 @@ import com.asura.android_study.activity.behavior.UCBehaviorActivity;
 import com.asura.android_study.activity.constranitlayout.ConstraintLayoutActivity;
 import com.asura.android_study.activity.constranitlayout.ConstraintLayoutTransitionActivity;
 import com.asura.android_study.activity.eventbus.SubscribeActivity;
+import com.asura.android_study.activity.floatwindow.FloatWindowActivity;
 import com.asura.android_study.activity.fragtofrag.Fragment2Activity;
 import com.asura.android_study.activity.itemtype.ItemTypeActivity;
 import com.asura.android_study.activity.threadpool.threadpool.ThreadPoolActivity;
@@ -58,6 +59,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends BasePermissionActivity {
 
+    @BindView(R.id.btn_change_color)
+    Button mBtnChangeColor;
     @BindView(R.id.btn_open_qq)
     Button mBtnOpenQq;
     @BindView(R.id.btn_open_email)
@@ -106,6 +109,8 @@ public class MainActivity extends BasePermissionActivity {
     Button mBtnThreadPoo2;
     @BindView(R.id.btn_event_bus)
     Button mBtnEventBus;
+    @BindView(R.id.btn_show_dialog)
+    Button mBtnShowDialog;
 
     private NetWorkReceiver mNetWorkReceiver;
     private ScrollerAdapter mScrollerAdapter;
@@ -137,15 +142,15 @@ public class MainActivity extends BasePermissionActivity {
         checkSelfPermission();
     }
 
-    @OnClick({R.id.btn_open_qq, R.id.btn_open_email, R.id.btn_open_email_app, R.id.btn_set_wallpaper,
+    @OnClick({R.id.btn_change_color, R.id.btn_open_qq, R.id.btn_open_email, R.id.btn_open_email_app, R.id.btn_set_wallpaper,
             R.id.btn_music_bind_service, R.id.btn_messenger_service, R.id.btn_rxJava, R.id.btn_leafAnim,
             R.id.btn_coordinatorLayout, R.id.btn_UCBehaviorActivity, R.id.btn_fragment_activity,
             R.id.btn_item_type, R.id.btn_viewpager, R.id.btn_multi_viewpager, R.id.btn_bottom_nav, R.id.btn_custom_data,
             R.id.btn_constraintLayout, R.id.btn_constraint_transition, R.id.btn_threadPool1,
-            R.id.btn_threadPool2, R.id.btn_event_bus})
+            R.id.btn_threadPool2, R.id.btn_event_bus, R.id.btn_show_dialog})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_open_qq:
+            case R.id.btn_change_color:
                 LeftView view1 = findViewById(R.id.ddddd);
                 TurnLeftView view2 = findViewById(R.id.ddddd2);
                 TurnRightView view3 = findViewById(R.id.ddddd3);
@@ -185,13 +190,9 @@ public class MainActivity extends BasePermissionActivity {
                         });
                     }
                 });
-                //                openQQ(MainActivity.this);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this,"openQQopenQQopenQQopenQQ",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                break;
+            case R.id.btn_open_qq:
+                openQQ(MainActivity.this);
                 break;
             case R.id.btn_open_email:
                 openMailAppSend();
@@ -257,6 +258,9 @@ public class MainActivity extends BasePermissionActivity {
                 break;
             case R.id.btn_event_bus:
                 startActivity(new Intent(MainActivity.this, SubscribeActivity.class));
+                break;
+            case R.id.btn_show_dialog:
+                startActivity(new Intent(MainActivity.this, FloatWindowActivity.class));
                 break;
             default:
         }

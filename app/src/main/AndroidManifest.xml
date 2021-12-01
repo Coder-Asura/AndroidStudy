@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <application
         android:name=".application.MyApplication"
@@ -15,8 +17,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".slidingchecklayout.SlidingCheckLayoutActivity">
-<!--        <activity android:name=".activity.MainActivity">-->
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,6 +64,7 @@
         <activity android:name=".activity.eventbus.PublishActivity" />
         <activity android:name=".activity.eventbus.StickyActivity" />
         <activity android:name=".activity.eventbus.PublishPriorityActivity" />
+        <activity android:name=".activity.floatwindow.FloatWindowActivity" />
 
         <service
             android:name=".service.music.MusicService"
@@ -84,6 +86,21 @@
             <meta-data
                 android:name="android.service.wallpaper"
                 android:resource="@xml/livewallpaper" />
+        </service>
+
+        <service android:name=".activity.floatwindow.service.SuspendwindowService" />
+        <service
+            android:name=".activity.floatwindow.service.WorkAccessibilityService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/allocation" />
         </service>
     </application>
 
