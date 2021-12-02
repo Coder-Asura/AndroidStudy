@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
 import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseLazyFragment
 import com.asura.android_study.ui.viewpager.*
 
 /**

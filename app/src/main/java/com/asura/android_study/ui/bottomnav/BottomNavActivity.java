@@ -32,7 +32,7 @@ public class BottomNavActivity extends BaseActivity implements MyListener {
     }
 
     @Override
-    public void init() {
+    public void initView() {
         //        mNav.getMenu().add(1,0,0,"哈");
         //        mNav.getMenu().add(1,1,1,"哈哈");
         //        mNav.getMenu().add(1,2,2,"哈哈哈");

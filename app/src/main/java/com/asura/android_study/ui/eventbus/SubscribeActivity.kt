@@ -27,7 +27,7 @@ class SubscribeActivity : BaseActivity(), View.OnClickListener {
         return R.layout.activity_subscribe;
     }
 
-    override fun init() {
+    override fun initView() {
         btn_to_publish.setOnClickListener(this)
         btn_publish_sticky.setOnClickListener(this)
         btn_to_sticky.setOnClickListener(this)

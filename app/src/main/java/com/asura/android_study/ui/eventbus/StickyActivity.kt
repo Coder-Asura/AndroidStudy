@@ -19,7 +19,7 @@ class StickyActivity : BaseActivity(), View.OnClickListener {
         return R.layout.activity_sticky;
     }
 
-    override fun init() {
+    override fun initView() {
         btn_remove_sticky.setOnClickListener(this)
         btn_register_sticky.setOnClickListener(this)
     }

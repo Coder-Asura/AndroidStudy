@@ -85,7 +85,7 @@ public class Fragment2Activity extends BaseActivity implements MyListener {
     }
 
     @Override
-    public void init() {
+    public void initView() {
         mFragment1 = Fragment1.createInstance();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

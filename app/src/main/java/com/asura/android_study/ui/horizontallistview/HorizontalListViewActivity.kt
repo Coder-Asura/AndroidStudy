@@ -17,7 +17,7 @@ class HorizontalListViewActivity : BaseActivity() {
 
     private var mScrollerAdapter: ScrollerAdapter? = null
 
-    override fun init() {
+    override fun initView() {
         val strings: MutableList<String> = ArrayList()
         for (i in 0..39) {
             strings.add("新开关$i")

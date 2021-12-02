@@ -1,82 +1,44 @@
-package com.asura.android_study.ui.fragtofrag;
+package com.asura.android_study.ui.fragtofrag
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import com.asura.android_study.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.content.Context
+import android.os.Bundle
+import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment3.*
 
 /**
  * Created by Liuxd on 2016/11/1 21:05.
  */
+class Fragment3 : BaseFragment() {
+    var mMyListener: MyListener? = null
 
-public class Fragment3 extends Fragment {
 
-    @BindView(R.id.button2)
-    Button mButton2;
-    @BindView(R.id.textView2)
-    TextView mTextView2;
-    MyListener mMyListener;
-
-    @TargetApi(23)
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        onAttachToContext(context);
+    override fun onAttachToContext(context: Context?) {
+        mMyListener = context as MyListener?
     }
 
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            onAttachToContext(activity);
+
+    override fun setLayoutId(): Int {
+        return R.layout.fragment3
+    }
+
+    override fun initView() {
+        if (arguments != null) {
+            textView3.text = requireArguments().getString("name", "default")
+        }
+        button3.setOnClickListener {
+            mMyListener?.sendFrom2("收到fragment3的值")
         }
     }
 
-    protected void onAttachToContext(Context context) {
-        mMyListener = (MyListener) context;
-    }
-
-    public Fragment3() {
-
-    }
-
-    public static Fragment3 createInstance(String name) {
-        Fragment3 fragment2 = new Fragment3();
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        fragment2.setArguments(bundle);
-        return fragment2;
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = LayoutInflater.from(getActivity()).inflate(R.layout.fragment3, null);
-        ButterKnife.bind(this, root);
-        if (getArguments() != null) {
-            mTextView2.setText(getArguments().getString("name", "default"));
+    companion object {
+        @JvmStatic
+        fun createInstance(name: String?): Fragment3 {
+            val fragment3 = Fragment3()
+            val bundle = Bundle()
+            bundle.putString("name", name)
+            fragment3.arguments = bundle
+            return fragment3
         }
-        return root;
-    }
-
-    @OnClick(R.id.button2)
-    public void onClick() {
-        mMyListener.sendFrom2("收到fragment3的值");
     }
 }

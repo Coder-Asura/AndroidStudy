@@ -32,7 +32,12 @@ abstract class BaseActivity : AppCompatActivity(), IBase {
         initSlidrConfig() //初始化滑动返回
         AppManager.getInstance().addActivity(this)
         initToolBar()
-        init() //一些初始化操作
+        initData()
+        initView() //一些初始化操作
+    }
+
+    override fun initData() {
+
     }
 
     private fun initToolBar() {}

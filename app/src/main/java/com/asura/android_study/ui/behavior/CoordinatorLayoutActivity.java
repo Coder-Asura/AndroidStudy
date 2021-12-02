@@ -15,7 +15,7 @@ public class CoordinatorLayoutActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
 
     }
 }

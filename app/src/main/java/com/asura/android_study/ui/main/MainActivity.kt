@@ -82,7 +82,7 @@ class MainActivity : BasePermissionActivity() {
         return R.layout.activity_main
     }
 
-    override fun init() {
+    override fun initView() {
         mainAdapter = MainAdapter(this, dataList)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_main.layoutManager = layoutManager

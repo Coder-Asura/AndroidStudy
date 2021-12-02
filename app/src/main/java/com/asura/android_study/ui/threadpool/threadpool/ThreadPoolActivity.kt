@@ -26,7 +26,7 @@ class ThreadPoolActivity : BaseActivity(), View.OnClickListener {
         return R.layout.activity_thrad_pool
     }
 
-    override fun init() {
+    override fun initView() {
         btn_thread.setOnClickListener(this)
         btn_runnable.setOnClickListener(this)
         btn_callable.setOnClickListener(this)

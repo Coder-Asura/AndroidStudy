@@ -28,7 +28,7 @@ public class LeafLoadingActivity extends BaseActivity implements OnSeekBarChange
     }
 
     @Override
-    public void init() {
+    public void initView() {
         initViews();
         mHandler.sendEmptyMessageDelayed(REFRESH_PROGRESS, 3000);
     }

@@ -22,6 +22,10 @@ abstract class BaseFragment : Fragment(), IBase {
     private var mRootView: View? = null
     private val TAG = this.javaClass.simpleName
 
+    override fun initData() {
+
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -34,7 +38,7 @@ abstract class BaseFragment : Fragment(), IBase {
      *
      * @param context 上下文（一般都是数据交互的接口）
      */
-    fun onAttachToContext(context: Context?) {
+    open fun onAttachToContext(context: Context?) {
         d(TAG, "onAttachToContext")
     }
 
@@ -50,13 +54,14 @@ abstract class BaseFragment : Fragment(), IBase {
             parent?.removeView(mRootView)
         }
         mRootView = inflater.inflate(setLayoutId(), null)
-        init()
+        initData()
         return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         d(TAG, "onViewCreated")
+        initView()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

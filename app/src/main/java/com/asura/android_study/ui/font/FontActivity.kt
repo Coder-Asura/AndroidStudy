@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_font.*
  * Asuraliu 2021/12/2 1.0 首次创建
  */
 class FontActivity : BaseActivity() {
-    override fun init() {
+    override fun initView() {
         FontHelper.injectFont(csl_font)
     }
 

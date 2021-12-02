@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.asura.a_log.ALog;
 import com.asura.android_study.R;
 import com.asura.android_study.ui.base.BaseActivity;
+import com.asura.android_study.ui.base.BaseLazyFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class ViewPagerActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
         mViewpager = findViewById(R.id.viewpager);
         mTabLayout = findViewById(R.id.tab_layout);
         mFragmentList = new ArrayList<>();
@@ -63,10 +64,10 @@ public class ViewPagerActivity extends BaseActivity {
                         mLazyFragment1.setTv_name("111111111111111111111");
                         break;
                     case 1:
-                        //                        mLazyFragment2.setTv_name("222222222222222222222");
+                        mLazyFragment2.setTv_name("222222222222222222222");
                         break;
                     case 2:
-                        //                        mLazyFragment3.setTv_name("3333333333333333333333333333");
+                        mLazyFragment3.setTv_name("3333333333333333333333333333");
                         break;
                     case 3:
                         mLazyFragment4.setTv_name("44444444444444444444");

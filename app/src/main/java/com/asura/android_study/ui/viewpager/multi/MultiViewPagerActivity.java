@@ -1,20 +1,15 @@
 package com.asura.android_study.ui.viewpager.multi;
 
-import androidx.viewpager.widget.ViewPager;
-
 import com.asura.android_study.R;
 import com.asura.android_study.ui.base.BaseActivity;
-import com.asura.android_study.ui.viewpager.BaseLazyFragment;
+import com.asura.android_study.ui.base.BaseLazyFragment;
 import com.asura.android_study.ui.viewpager.LazyFragment1;
 import com.asura.android_study.ui.viewpager.LazyFragment2;
 import com.asura.android_study.ui.viewpager.LazyFragment3;
 import com.asura.android_study.ui.viewpager.LazyFragment4;
 import com.asura.android_study.ui.viewpager.MyPagerAdapter;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * Created by Liuxd on 2016/11/12 14:44.
@@ -22,14 +17,10 @@ import butterknife.BindView;
 
 public class MultiViewPagerActivity extends BaseActivity {
 
-    @BindView(R.id.viewpager)
-    ViewPager mViewpager;
-
     List<BaseLazyFragment> mFragmentList;
     List<BaseLazyFragment> mFragmentList2;
     private List<String> mTitles;
-    @BindView(R.id.tab_layout)
-    TabLayout mTabLayout;
+
 
     private LazyFragment1 mLazyFragment1;
     private LazyFragment2 mLazyFragment2;
@@ -43,7 +34,7 @@ public class MultiViewPagerActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
         ViewpagerLayout ll = findViewById(R.id.mylayout);
         ll.initView(getSupportFragmentManager(), R.id.id_viewpager);
         ViewpagerLayout ll2 = findViewById(R.id.mylayout2);

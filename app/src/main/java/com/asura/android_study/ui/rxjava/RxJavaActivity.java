@@ -17,7 +17,7 @@ public class RxJavaActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
        /* //------------------------------------基础用法1-------------------------------------------------------------
         Subscriber<String> subscriber = new Subscriber<String>() {
             @Override

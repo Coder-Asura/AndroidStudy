@@ -18,7 +18,7 @@ class PublishPriorityActivity : BaseActivity(), View.OnClickListener {
         return R.layout.activity_subscribe_priority;
     }
 
-    override fun init() {
+    override fun initView() {
         btn_publish_priority.setOnClickListener(this)
     }
 

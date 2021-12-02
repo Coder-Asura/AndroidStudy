@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_section.*
  * Asuraliu 2021/12/2 1.0 首次创建
  */
 class SectionActivity : BaseActivity() {
-    override fun init() {
+    override fun initView() {
         btn_change_color.setOnClickListener {
             ddddd.paintColor = Color.BLACK
             ddddd.viewChecked = true

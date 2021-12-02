@@ -26,7 +26,7 @@ public class ItemTypeActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.rv);
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -72,10 +72,10 @@ public class ItemTypeActivity extends BaseActivity {
             }
         });
         mRecyclerView.setAdapter(mAdapter = new MyAdapter());
-        initData();
+        initDatas();
     }
 
-    private void initData() {
+    private void initDatas() {
         int[] colors = new int[]{android.R.color.holo_red_dark, android.R.color.holo_green_dark, android.R.color.holo_blue_bright,};
         List<DataModel1> list1 = new ArrayList<>();
         List<DataModel2> list2 = new ArrayList<>();

@@ -23,7 +23,7 @@ public class AlbumActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
 
         new AsyncTask<Void, Integer, ArrayList<HashMap<String, String>>>() {
 

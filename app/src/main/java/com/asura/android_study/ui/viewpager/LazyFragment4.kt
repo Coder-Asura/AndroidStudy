@@ -1,52 +1,43 @@
-package com.asura.android_study.ui.viewpager;
+package com.asura.android_study.ui.viewpager
 
-import android.os.Bundle;
-import android.widget.TextView;
+import android.os.Bundle
 
-import com.asura.android_study.R;
-
-import butterknife.BindView;
+import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseLazyFragment
+import kotlinx.android.synthetic.main.fragment_lazy1.*
 
 /**
  * Created by Liuxd on 2016/11/12 15:50.
  */
+class LazyFragment4 : BaseLazyFragment() {
 
-public class LazyFragment4 extends BaseLazyFragment {
 
-    @BindView(R.id.tv)
-    TextView mTv;
-
-    @BindView(R.id.tv_name)
-    TextView tv_name;
-
-    public LazyFragment4() {
+    protected override fun initPrepare() {
+        tv.text = "4444"
+        tv_name.text = arguments?.getString("text")
     }
 
-    public static LazyFragment4 create(String text) {
-        LazyFragment4 fragment = new LazyFragment4();
-        Bundle bundle = new Bundle();
-        bundle.putString("text", text);
-        fragment.setArguments(bundle);
-        return fragment;
+    protected override fun initDataReal() {}
+    override fun setLayoutId(): Int {
+        return R.layout.fragment_lazy1
     }
 
-    @Override
-    protected void initPrepare() {
-        mTv.setText("4444");
-        tv_name.setText(getArguments().getString("text"));
+    override fun initView() {
+
     }
 
-    @Override
-    protected void initData() {
+    fun setTv_name(name: String?) {
+        tv_name.text = name
     }
 
-    @Override
-    public int setLayoutId() {
-        return R.layout.fragment_lazy1;
+    companion object {
+        @JvmStatic
+        fun create(text: String?): LazyFragment4 {
+            val fragment = LazyFragment4()
+            val bundle = Bundle()
+            bundle.putString("text", text)
+            fragment.arguments = bundle
+            return fragment
+        }
     }
-
-    public void setTv_name(String name) {
-        tv_name.setText(name);
-    }
-
 }

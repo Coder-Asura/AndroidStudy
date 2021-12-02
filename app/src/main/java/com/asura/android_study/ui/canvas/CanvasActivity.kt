@@ -12,7 +12,7 @@ import com.asura.android_study.ui.base.BaseActivity
  * Asuraliu 2021/12/2 1.0 首次创建
  */
 class CanvasActivity : BaseActivity() {
-    override fun init() {
+    override fun initView() {
 
     }
 

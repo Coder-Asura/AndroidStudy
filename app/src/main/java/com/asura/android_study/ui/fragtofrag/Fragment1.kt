@@ -1,80 +1,39 @@
-package com.asura.android_study.ui.fragtofrag;
+package com.asura.android_study.ui.fragtofrag
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import com.asura.android_study.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.content.Context
+import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment1.*
 
 /**
  * Created by Liuxd on 2016/11/1 21:05.
  */
+class Fragment1 : BaseFragment() {
+    private var listener: MyListener? = null
 
-public class Fragment1 extends Fragment {
-    private MyListener listener;
-
-    @BindView(R.id.button1)
-    Button mButton1;
-    @BindView(R.id.textView1)
-    TextView mTextView1;
-
-    public Fragment1() {
-
+    override fun setLayoutId(): Int {
+        return R.layout.fragment1
     }
 
-    public static Fragment1 createInstance() {
-        return new Fragment1();
-    }
-
-    @TargetApi(23)
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        onAttachToContext(context);
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            onAttachToContext(activity);
+    override fun initView() {
+        button1.setOnClickListener {
+            listener?.sendFrom1("收到fragment1的值")
         }
     }
 
-    protected void onAttachToContext(Context context) {
-        listener = (MyListener) context;
+    override fun onAttachToContext(context: Context?) {
+        super.onAttachToContext(context)
+        listener = context as? MyListener
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = LayoutInflater.from(getActivity()).inflate(R.layout.fragment1, null);
-        ButterKnife.bind(this, root);
-        return root;
+    fun setTextView1(info: String?) {
+        textView1.text = info
     }
 
-
-    @OnClick(R.id.button1)
-    public void onClick() {
-        listener.sendFrom1("收到fragment1的值");
-    }
-
-    public void setTextView1(String info) {
-        mTextView1.setText(info);
+    companion object {
+        @JvmStatic
+        fun createInstance(): Fragment1 {
+            return Fragment1()
+        }
     }
 }

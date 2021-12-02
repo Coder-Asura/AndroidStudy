@@ -18,7 +18,7 @@ class PublishActivity : BaseActivity(), View.OnClickListener {
         return R.layout.activity_publish;
     }
 
-    override fun init() {
+    override fun initView() {
         btn_main_publish.setOnClickListener(this)
         btn_thread_publish.setOnClickListener(this)
     }

@@ -6,5 +6,6 @@ package com.asura.android_study.ui.base
  */
 interface IBase {
     fun setLayoutId(): Int
-    fun init()
+    fun initView()
+    fun initData()
 }

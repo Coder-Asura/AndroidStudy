@@ -15,7 +15,7 @@ public class UCBehaviorActivity extends BaseActivity {
     }
 
     @Override
-    public void init() {
+    public void initView() {
 
     }
 }

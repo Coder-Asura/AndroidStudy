@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.asura.android_study.ui.viewpager.BaseLazyFragment;
+import com.asura.android_study.ui.base.BaseLazyFragment;
 
 import java.util.List;
 
