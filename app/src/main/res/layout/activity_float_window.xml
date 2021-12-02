@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingTop="50dp"
     android:background="@color/white"
-    tools:context=".activity.floatwindow.FloatWindowActivity">
+    tools:context=".ui.floatwindow.FloatWindowActivity">
 
     <Button
         android:id="@+id/bt_01"

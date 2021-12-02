@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     app:chainUseRtl="true"
-    tools:context=".activity.constranitlayout.ConstraintLayoutActivity">
+    tools:context=".ui.constranitlayout.ConstraintLayoutActivity">
 
     <TextView
         android:id="@+id/btn1"

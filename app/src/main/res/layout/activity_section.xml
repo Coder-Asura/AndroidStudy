@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.asura.android_study.view.slide.LeftView
+            android:id="@+id/ddddd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.asura.android_study.view.slide.TurnLeftView
+            android:id="@+id/ddddd2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <com.asura.android_study.view.slide.TurnRightView
+            android:id="@+id/ddddd3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <com.asura.android_study.view.slide.EmptyView
+            android:id="@+id/ddddd6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <com.asura.android_study.view.slide.RightView
+            android:id="@+id/ddddd4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <com.asura.android_study.view.slide.NormalView
+            android:id="@+id/ddddd5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <Button
+        android:id="@+id/btn_change_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="改变颜色"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+</androidx.constraintlayout.widget.ConstraintLayout>

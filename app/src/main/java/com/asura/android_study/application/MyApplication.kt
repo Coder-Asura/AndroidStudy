@@ -11,8 +11,17 @@ import com.asura.android_study.BuildConfig
  * Created by Liuxd on 2016/9/14 14:22.
  */
 class MyApplication : Application() {
+    companion object{
+        private var INSTANCE: MyApplication? = null
+
+        fun getInstance(): MyApplication {
+            return INSTANCE!!
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
+        INSTANCE = this
         ALog.initLog(BuildConfig.LOG_ENABLE, "AsuraLxd")
     }
 

@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.asura.android_study.activity.viewpager.multi.ViewpagerLayout
+    <com.asura.android_study.ui.viewpager.multi.ViewpagerLayout
         android:id="@+id/mylayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="dsdadasda" />
 
-    <com.asura.android_study.activity.viewpager.multi.ViewpagerLayout
+    <com.asura.android_study.ui.viewpager.multi.ViewpagerLayout
         android:id="@+id/mylayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

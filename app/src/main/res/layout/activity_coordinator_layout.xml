@@ -15,9 +15,9 @@
         android:layout_marginTop="300dp"
         android:background="#FFCC00"
         android:text="Hello"
-        app:layout_behavior="com.asura.android_study.activity.behavior.MyBehavior"/>
+        app:layout_behavior=".ui.behavior.MyBehavior"/>
 
-    <com.asura.android_study.activity.behavior.TempView
+    <com.asura.android_study.ui.behavior.TempView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="300dp"
