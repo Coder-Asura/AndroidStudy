@@ -107,6 +107,6 @@
         android:text="UC头条"
         android:textColor="#fff"
         android:textSize="18sp"
-        app:layout_behavior=".ui.behavior.DrawerBehavior" />
+        app:layout_behavior="com.asura.android_study.ui.behavior.DrawerBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

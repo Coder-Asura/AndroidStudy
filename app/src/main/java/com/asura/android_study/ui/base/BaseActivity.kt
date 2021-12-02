@@ -24,6 +24,11 @@ import com.r0adkll.slidr.model.SlidrPosition
  */
 abstract class BaseActivity : AppCompatActivity(), IBase {
     val TAG = this.javaClass.simpleName
+
+    companion object {
+        const val KEY_TITLE = "title"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ALog.d(TAG, "onCreate")
@@ -40,7 +45,12 @@ abstract class BaseActivity : AppCompatActivity(), IBase {
 
     }
 
-    private fun initToolBar() {}
+    private fun initToolBar() {
+        intent.getStringExtra(KEY_TITLE)?.let {
+            title = it
+        }
+    }
+
     private fun initSlidrConfig() {
         val config = SlidrConfig.Builder() //                .primaryColor(getResources().getColor(R.color.colorPrimary))//滑动时状态栏的渐变结束的颜色
             .position(SlidrPosition.LEFT) //从左边滑动

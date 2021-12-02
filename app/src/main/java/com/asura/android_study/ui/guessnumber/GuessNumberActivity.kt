@@ -1,18 +1,24 @@
-package com.asura.guessnumber
+package com.asura.android_study.ui.guessnumber
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_guess_number.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class GuessNumberActivity : BaseActivity() {
 
     var input: Int = -1
     var answer: Int = -1
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+    override fun setLayoutId(): Int {
+        return R.layout.activity_guess_number
+    }
+
+    override fun initView() {
         btn_ask.setOnClickListener {
             try {
                 input = input_ask.text.toString().toInt()
@@ -40,14 +46,14 @@ class MainActivity : AppCompatActivity() {
             }
             if (input == answer) {
                 AlertDialog.Builder(this)
-                        .setTitle("666")
-                        .setMessage("你他娘的真是个天才！！！")
-                        .setNegativeButton("再玩一次") { dialog, _ ->
-                            input_ask.setText("")
-                            input_answer.setText("")
-                            tv_result.text = ""
-                            dialog.dismiss()
-                        }.create().show()
+                    .setTitle("666")
+                    .setMessage("你他娘的真是个天才！！！")
+                    .setNegativeButton("再玩一次") { dialog, _ ->
+                        input_ask.setText("")
+                        input_answer.setText("")
+                        tv_result.text = ""
+                        dialog.dismiss()
+                    }.create().show()
 
                 tv_result.text = "你他娘的真是个天才！！！"
             } else if (input < answer) {
@@ -58,6 +64,5 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "再大一点！", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }

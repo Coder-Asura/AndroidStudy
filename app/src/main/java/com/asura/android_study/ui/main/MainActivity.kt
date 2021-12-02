@@ -31,6 +31,7 @@ import com.asura.android_study.ui.service.music.MessengerActivity
 import com.asura.android_study.ui.service.music.MusicActivity
 import com.asura.android_study.ui.base.BasePermissionActivity
 import com.asura.android_study.ui.font.FontActivity
+import com.asura.android_study.ui.guessnumber.GuessNumberActivity
 import com.asura.android_study.ui.horizontallistview.HorizontalListViewActivity
 import com.asura.android_study.view.CameraLiveWallpaper
 import com.asura.android_study.view.slide.*
@@ -56,6 +57,7 @@ class MainActivity : BasePermissionActivity() {
             setTransparentWallpaper()
             startWallpaper()
         },
+        MainItem("猜数字游戏", GuessNumberActivity::class.java, null),
         MainItem("修改layout parent字体", FontActivity::class.java, null),
         MainItem("横向ListView", HorizontalListViewActivity::class.java, null),
         MainItem("Bind Service 音乐", MusicActivity::class.java, null),

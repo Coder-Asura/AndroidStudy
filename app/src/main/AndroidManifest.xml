@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.guessnumber.GuessNumberActivity" />
         <activity android:name=".ui.font.FontActivity" />
         <activity android:name=".ui.horizontallistview.HorizontalListViewActivity" />
         <activity android:name=".ui.canvas.CanvasActivity" />
