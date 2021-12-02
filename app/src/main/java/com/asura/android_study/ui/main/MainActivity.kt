@@ -10,29 +10,31 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asura.android_study.R
-import com.asura.android_study.ui.bottomnav.BottomNavActivity
-import com.asura.android_study.ui.customdata.CustomDataActivity
-import com.asura.android_study.ui.leafloading.LeafLoadingActivity
-import com.asura.android_study.ui.rxjava.RxJavaActivity
+import com.asura.android_study.receiver.NetWorkReceiver
+import com.asura.android_study.ui.base.BasePermissionActivity
 import com.asura.android_study.ui.behavior.CoordinatorLayoutActivity
 import com.asura.android_study.ui.behavior.UCBehaviorActivity
+import com.asura.android_study.ui.bottomnav.BottomNavActivity
 import com.asura.android_study.ui.constranitlayout.ConstraintLayoutActivity
 import com.asura.android_study.ui.constranitlayout.ConstraintLayoutTransitionActivity
+import com.asura.android_study.ui.customdata.CustomDataActivity
 import com.asura.android_study.ui.eventbus.SubscribeActivity
 import com.asura.android_study.ui.floatwindow.FloatWindowActivity
+import com.asura.android_study.ui.font.FontActivity
 import com.asura.android_study.ui.fragtofrag.Fragment2Activity
+import com.asura.android_study.ui.guessnumber.GuessNumberActivity
+import com.asura.android_study.ui.horizontallistview.HorizontalListViewActivity
 import com.asura.android_study.ui.itemtype.ItemTypeActivity
+import com.asura.android_study.ui.leafloading.LeafLoadingActivity
+import com.asura.android_study.ui.rxjava.RxJavaActivity
+import com.asura.android_study.ui.section.SectionActivity
+import com.asura.android_study.ui.service.music.MessengerActivity
+import com.asura.android_study.ui.service.music.MusicActivity
+import com.asura.android_study.ui.slidingchecklayout.SlidingCheckLayoutActivity
 import com.asura.android_study.ui.threadpool.step1.ThreadPool2Activity
 import com.asura.android_study.ui.threadpool.threadpool.ThreadPoolActivity
 import com.asura.android_study.ui.viewpager.ViewPagerActivity
 import com.asura.android_study.ui.viewpager.multi.MultiViewPagerActivity
-import com.asura.android_study.receiver.NetWorkReceiver
-import com.asura.android_study.ui.service.music.MessengerActivity
-import com.asura.android_study.ui.service.music.MusicActivity
-import com.asura.android_study.ui.base.BasePermissionActivity
-import com.asura.android_study.ui.font.FontActivity
-import com.asura.android_study.ui.guessnumber.GuessNumberActivity
-import com.asura.android_study.ui.horizontallistview.HorizontalListViewActivity
 import com.asura.android_study.view.CameraLiveWallpaper
 import com.asura.android_study.view.slide.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -77,7 +79,9 @@ class MainActivity : BasePermissionActivity() {
         MainItem("线程、线程池1", ThreadPoolActivity::class.java, null),
         MainItem("线程、线程池2", ThreadPool2Activity::class.java, null),
         MainItem("EventBus", SubscribeActivity::class.java, null),
-        MainItem("悬浮窗", FloatWindowActivity::class.java, null)
+        MainItem("悬浮窗", FloatWindowActivity::class.java, null),
+        MainItem("滑动选择", SlidingCheckLayoutActivity::class.java, null),
+        MainItem("灯段View", SectionActivity::class.java, null)
     )
 
     override fun setLayoutId(): Int {

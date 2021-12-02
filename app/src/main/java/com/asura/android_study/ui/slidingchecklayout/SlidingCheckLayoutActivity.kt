@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.asura.android_study.R
 import com.asura.android_study.databinding.ActivitySlidingCheckLayoutBinding
 import com.asura.android_study.model.LightSection
+import com.asura.android_study.ui.base.BaseActivity
 import com.asura.android_study.utils.LightSectionsUtils
 import com.asura.android_study.view.SlidingCheckLayout
 
@@ -57,6 +58,9 @@ class SlidingCheckLayoutActivity : AppCompatActivity(), SlidingCheckLayout.OnSli
         mLightSectionAdapter = LightSectionAdapter(createData())
         binding?.rv?.layoutManager = staggeredGridLayoutManager
         binding?.rv?.adapter = mLightSectionAdapter
+        intent.getStringExtra(BaseActivity.KEY_TITLE)?.let {
+            title = it
+        }
     }
 
     private fun refresh() {

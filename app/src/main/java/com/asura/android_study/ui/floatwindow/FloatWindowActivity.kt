@@ -3,7 +3,6 @@ package com.asura.android_study.ui.floatwindow
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,8 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseActivity
 import com.asura.android_study.ui.floatwindow.service.SuspendwindowService
 import com.asura.android_study.ui.floatwindow.utils.ItemViewTouchListener
 import com.asura.android_study.ui.floatwindow.utils.Utils
@@ -26,13 +25,15 @@ import kotlinx.android.synthetic.main.activity_float_window.*
  * 来源：稀土掘金
  * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
-class FloatWindowActivity : AppCompatActivity(), View.OnClickListener {
+class FloatWindowActivity : BaseActivity(), View.OnClickListener {
     private var floatRootView: View? = null //悬浮窗View
     private var isReceptionShow = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_float_window)
+    override fun setLayoutId(): Int {
+        return R.layout.activity_float_window
+    }
+
+    override fun initView() {
         startService(Intent(this, SuspendwindowService::class.java))
         bt_01.setOnClickListener(this)
         bt_02.setOnClickListener(this)

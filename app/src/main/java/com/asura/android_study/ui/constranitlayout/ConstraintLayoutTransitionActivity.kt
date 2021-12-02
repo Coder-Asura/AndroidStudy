@@ -6,6 +6,7 @@ import android.transition.TransitionManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_constraint_layout_transition_a.*
 
 /**
@@ -13,11 +14,14 @@ import kotlinx.android.synthetic.main.activity_constraint_layout_transition_a.*
  *
  * @author Created by Asura on 2018/6/13 13:35.
  */
-class ConstraintLayoutTransitionActivity : AppCompatActivity() {
+class ConstraintLayoutTransitionActivity : BaseActivity() {
     var isFirst = true
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_constraint_layout_transition_a)
+
+    override fun setLayoutId(): Int {
+        return R.layout.activity_constraint_layout_transition_a
+    }
+
+    override fun initView() {
         val first = ConstraintSet()
         val second = ConstraintSet()
         first.clone(contentPanel)

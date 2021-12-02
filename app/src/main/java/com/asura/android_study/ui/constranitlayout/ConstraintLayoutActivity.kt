@@ -1,9 +1,8 @@
 package com.asura.android_study.ui.constranitlayout
 
 import android.graphics.Color
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.asura.android_study.R
+import com.asura.android_study.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_constraint_layout.*
 
 /**
@@ -11,12 +10,14 @@ import kotlinx.android.synthetic.main.activity_constraint_layout.*
  *
  * @author Created by Asura on 2018/6/13 13:35.
  */
-class ConstraintLayoutActivity : AppCompatActivity() {
+class ConstraintLayoutActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_constraint_layout)
-        btn1.text="dsadasd"
+    override fun setLayoutId(): Int {
+        return R.layout.activity_constraint_layout
+    }
+
+    override fun initView() {
+        btn1.text = "dsadasd"
         btn1.setTextColor(Color.parseColor("#ff0000"))
     }
 }

@@ -69,6 +69,8 @@
         <activity android:name="com.asura.android_study.ui.eventbus.StickyActivity" />
         <activity android:name="com.asura.android_study.ui.eventbus.PublishPriorityActivity" />
         <activity android:name="com.asura.android_study.ui.floatwindow.FloatWindowActivity" />
+        <activity android:name="com.asura.android_study.ui.slidingchecklayout.SlidingCheckLayoutActivity" />
+        <activity android:name="com.asura.android_study.ui.section.SectionActivity" />
 
         <service
             android:name=".ui.service.music.MusicService"
