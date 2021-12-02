@@ -159,7 +159,7 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
                     new Thread() {
                         @Override
                         public void run() {
-                            activity.getFirstMusic(Environment.getExternalStorageDirectory().getAbsolutePath());
+                            activity.getFirstMusic(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).getAbsolutePath());
                         }
                     }.start();
                     break;
