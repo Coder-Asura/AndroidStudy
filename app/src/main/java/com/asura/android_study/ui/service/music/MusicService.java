@@ -2,10 +2,14 @@ package com.asura.android_study.ui.service.music;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
+import android.text.TextUtils;
+
+import com.asura.android_study.R;
 
 /**
  * Created by Liuxd on 2017/6/15 15:34.
@@ -60,15 +64,20 @@ public class MusicService extends Service {
 
         try {
             mPlayer.reset();
-            mPlayer.setDataSource(path);
+            if (!TextUtils.isEmpty(path)) {
+                mPlayer.setDataSource(path);
+            } else {
+                AssetFileDescriptor afd = getResources().openRawResourceFd(R.raw.youhebuke);
+                mPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getDeclaredLength());
+            }
             mPlayer.prepare();
             mPlayer.start();
             mPlayer.seekTo(currentPos);
-//			Intent intent = new Intent("com.music.duration");
-//			intent.putExtra("duration", getDuration());
-//			sendBroadcast(intent);
-//
-//			mHandler.sendEmptyMessageDelayed(0, 1000);
+            //			Intent intent = new Intent("com.music.duration");
+            //			intent.putExtra("duration", getDuration());
+            //			sendBroadcast(intent);
+            //
+            //			mHandler.sendEmptyMessageDelayed(0, 1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
