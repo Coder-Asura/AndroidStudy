@@ -26,6 +26,7 @@ import com.asura.android_study.ui.guessnumber.GuessNumberActivity
 import com.asura.android_study.ui.horizontallistview.HorizontalListViewActivity
 import com.asura.android_study.ui.itemtype.ItemTypeActivity
 import com.asura.android_study.ui.leafloading.LeafLoadingActivity
+import com.asura.android_study.ui.permission.PermissionActivity
 import com.asura.android_study.ui.rxjava.RxJavaActivity
 import com.asura.android_study.ui.section.SectionActivity
 import com.asura.android_study.ui.service.music.MessengerActivity
@@ -81,7 +82,8 @@ class MainActivity : BasePermissionActivity() {
         MainItem("EventBus", SubscribeActivity::class.java, null),
         MainItem("悬浮窗", FloatWindowActivity::class.java, null),
         MainItem("滑动选择", SlidingCheckLayoutActivity::class.java, null),
-        MainItem("灯段View", SectionActivity::class.java, null)
+        MainItem("灯段View", SectionActivity::class.java, null),
+        MainItem("申请权限", PermissionActivity::class.java, null)
     )
 
     override fun setLayoutId(): Int {

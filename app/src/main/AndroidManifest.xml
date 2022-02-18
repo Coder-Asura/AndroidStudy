@@ -10,6 +10,11 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -71,6 +76,7 @@
         <activity android:name="com.asura.android_study.ui.floatwindow.FloatWindowActivity" />
         <activity android:name="com.asura.android_study.ui.slidingchecklayout.SlidingCheckLayoutActivity" />
         <activity android:name="com.asura.android_study.ui.section.SectionActivity" />
+        <activity android:name="com.asura.android_study.ui.permission.PermissionActivity" />
 
         <service
             android:name=".ui.service.music.MusicService"
